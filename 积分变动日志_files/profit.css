@@ -1,0 +1,2081 @@
+@charset "utf-8";
+
+html{
+    font-size: calc(100vw/3.75);
+}
+@media (min-width: 640px){
+    html{
+        font-size: 170.667px;
+    }
+}
+
+a:active{opacity:.7;}
+.profit .sky{
+    color:#31A8E0;
+}
+/*********本轮盈亏**********/
+.swiper-container {
+    width: 100%;
+    height: 100%;
+}
+.swiper-next, .swiper-prev {
+    position: absolute;
+    top: 50%;
+    left: .1rem;
+    width: .4rem;
+    height: .4rem;
+    line-height: .4rem;
+    text-align: center;
+    margin-top: -.2rem;
+    border-radius: 50%;
+    z-index: 10;
+    background: rgba(0,0,0,.3);
+    color: #fff;
+    font-size: .2rem;
+}
+
+.swiper-next {
+    right: .1rem;
+    left: auto;
+}
+.swiper-button-disabled{
+    opacity: 0;
+    display: none;
+}
+.profit .head{
+    position: relative;
+    text-align: center;
+    height: .4rem;
+    line-height: .4rem;
+    color:#fff;
+    background:#00a29a;
+    font-size: 14px;
+}
+.profit .list{
+    position: relative;
+    padding:.1rem;
+    border-bottom:1px solid #00a29a;
+}
+.profit .list ul{
+    position: relative;
+    width:100%;
+    overflow: hidden;
+}
+.profit .list li{
+    width:50%;
+    float: left;
+    line-height: .3rem;
+    font-size:.14rem;
+}
+.profit .list li .icon{
+    width: .17rem;
+    height: .17rem;
+    display: inline-block;
+    position: relative;
+    top: .028rem;
+    margin-right: .01rem;
+}
+.profit .list .sum .icon{
+    background:url(../images/icon/icon_06.png)center no-repeat;
+    background-size:100% auto;
+}
+.profit .list .time .icon{
+    background:url(../images/icon/icon_03.png)center no-repeat;
+    background-size:100% auto;
+}
+.profit .list .epicycle .icon{
+    background:url(../images/icon/icon_11.png)center no-repeat;
+    background-size:100% auto;
+}
+.profit .list .number .icon{
+    background:url(../images/icon/icon_14.png)center no-repeat;
+    background-size:100% auto;
+}
+.profit .tab table{
+    width:100%;
+    border-spacing: 0;
+    text-align: center;
+}
+.profit .tab table caption{
+    height:.3rem;
+    line-height: .3rem;
+    color:#00a29a;
+    font-size: .14rem;
+}
+.profit .tab .tab-1 caption{
+    border-top: 1px solid #00514c;
+}
+.profit .tab thead td{
+    font-size: .09rem;
+    padding: .03rem 0;
+    background:#00a29a;
+    color:#fff;
+    position: relative;
+}
+.profit .tab td.sec{
+    width: .7rem;
+}
+.profit .tab td.way{
+    width: .8rem;
+}
+.profit .tab thead td:after{
+    content:'';
+    height:100%;
+    border-right:1px solid #00514c;
+    position: absolute;
+    top:0;
+    right:0;
+}
+.profit .tab thead td:last-child:after{
+    border:none;
+}
+.profit .tab tbody td{
+    padding: .03rem 0;
+    position: relative;
+    font-size: .08rem;
+}
+.profit .tab tbody td:before{
+    content:'';
+    height:100%;
+    border-right:1px solid #00514c;
+    position: absolute;
+    top:0;
+    right:0;
+    -webkit-appearance: none;
+}
+.profit .tab tbody td:after{
+    content:'';
+    width:100%;
+    border-bottom:1px solid #00a29a;
+    position: absolute;
+    bottom:0;
+    left:0;
+    -webkit-appearance: none;
+}
+.profit .tab tbody  td:last-child:before{
+    border:none;
+}
+.profit .active{
+    color:#00a29a;
+}
+.profit .btn{
+    position: fixed;
+    top:50%;
+    width:100%;
+    max-width: 640px;
+    height: .3rem;
+    overflow: hidden;
+    -webkit-transform:translate3d(0, -50%,0);
+}
+.profit .btn .right,.profit .btn .left{
+    display: inline-block;
+    float: right;
+    text-align: center;
+    color:#fff;
+    width: .3rem;
+    height: .3rem;
+    line-height: .3rem;
+    border-radius:50%;
+    background:rgba(204,204,204,.7);
+}
+.profit .btn .left{
+    float: left;
+}
+
+
+
+/******[v2]本轮总盈亏**********/
+
+.profit .list .show-hand .icon{
+    background:url(../images/icon/icon_13.png)center no-repeat;
+    background-size:100% auto;
+}
+.profit .list .money .icon{
+    background:url(../images/icon/icon_16.png)center no-repeat;
+    background-size:100% auto;
+}
+.profit .tab tbody .view{
+    display: inline-block;
+    padding: 0 .05rem;
+    text-align: center;
+    border-radius:20px;
+    color:#fff;
+    background:#00a29a;
+    font-size: .1rem;
+}
+
+
+
+/*******云富豪开奖***********/
+
+.profit .banner{
+    width:100%;
+    height: 1rem;
+    position: relative;
+    background: url(../images/bg/banner_01.png)center no-repeat;
+    background-size: cover;
+}
+.profit .banner .no{
+    position: absolute;
+    top: .05rem;
+    left: .1rem;
+    font-size: .1rem;
+    color: rgba(255,255,255,.6);
+}
+.profit .banner .time{
+    position:absolute;
+    top:.2rem;
+    right:.15rem;
+    line-height:.2rem;
+    color:#fff;
+    font-size: .1rem;
+}
+.profit .charts .top{
+    position: relative;
+    background:#00a29a;
+    color:#fff;
+    padding: .05rem .1rem;
+    font-size: .12rem;
+}
+.profit .charts .yellow{
+    color:#FFF100;
+    text-align: center;
+}
+.profit .tab tbody .old-red{
+    color:#C30D23;
+}
+.profit .part-1 tr td.face{
+    max-width: .3rem;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+/*表
+******************************/
+.p-chart-box{
+    position: relative;
+    width: 100%;
+    overflow-x: scroll;
+    cursor: pointer;
+}
+svg{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    fill: none;
+    stroke: #999;
+    stroke-width:1;
+    z-index: 2;
+    pointer-events: none;
+}
+.p-chart{
+    height: 1.15rem;
+    overflow: hidden;
+    -webkit-user-select: none;
+}
+.p-chart>li{
+    position: relative;
+    width: .25rem;
+    height: 1rem;
+    float:left;
+}
+.p-chart>li:nth-child(odd){
+    background: #efeff0;
+}
+.p-chart>li .wrap{
+    position: absolute;
+    top: 25%;
+    left: 0;
+    height: 80%;
+    width: 100%;
+}
+.p-chart>li .tit{
+    position: absolute;
+    bottom: -.15rem;
+    width: 100%;
+    height: .15rem;
+    line-height: .15rem;
+    text-align: center;
+    font-size: .08rem;
+    background: #fff;
+    border-top: solid 1px #ddd;
+    font-weight: bold;
+    color: #000;
+}
+.p-chart>li [class*="type-"].active{
+    background: -webkit-radial-gradient(#ef6374, #c60f25);
+}
+.p-chart>li [class*="type-"]{
+    position: absolute;
+    left: 50%;
+    margin-left: -.1rem;
+    width: .2rem;
+    height: .2rem;
+    line-height: .2rem;
+    border-radius: 50%;
+    background: -webkit-radial-gradient(#13cec5, #00a29a);
+    color: #fff;
+    font-size: .08rem;
+    text-align: center;
+    z-index: 10;
+    -webkit-transform: translate3d(0,-.3rem,0);
+}
+.p-chart>li .type-17{top: 0;}
+.p-chart>li .type-16{top: 6.25%;}
+.p-chart>li .type-15{top: 12.5%;}
+.p-chart>li .type-14{top: 18.75%;}
+.p-chart>li .type-13{top: 25%;}
+.p-chart>li .type-12{top: 31.25%;}
+.p-chart>li .type-11{top: 37.5%;}
+.p-chart>li .type-10{top: 43.75%;}
+.p-chart>li .type-9{top: 50%;}
+.p-chart>li .type-8{top: 56.25%;}
+.p-chart>li .type-7{top: 62.5%;}
+.p-chart>li .type-6{top: 68.75%;}
+.p-chart>li .type-5{top: 75%;}
+.p-chart>li .type-4{top: 81.25%;}
+.p-chart>li .type-3{top: 87.5%;}
+.p-chart>li .type-2{top: 93.75%;}
+.p-chart>li .type-1{top: 100%;}
+.p-chart>li .type-0{
+    top: 115%;
+    margin-left: -.12rem;
+    background: transparent;
+    color: transparent;
+}
+.p-chart>li .c1{
+    background: -webkit-radial-gradient(#53b6f0,#1687c9);
+}
+.profit .face img{
+    display: inline-block;
+    width: .12rem;
+    height: .12rem;
+    position: relative;
+    top: .03rem;
+}
+
+/**********玩家数据统计**********************/
+
+.profit .head{
+    position: relative;
+}
+.profit .head .title{
+    padding:0 .6rem;
+    font-size: .14rem;
+}
+.profit .parts{
+    margin-top: .2rem;
+    position: relative;
+}
+.profit .head .mini-btn{
+    position: absolute;
+    top: 0.07rem;
+    right: .1rem;
+    padding: 0 .1rem;
+    background:#fff;
+    border:1px solid #00a29a;
+    border-radius:3px;
+    display: inline-block;
+    height: .25rem;
+    line-height: .25rem;
+    text-align: center;
+    font-size: .09rem;
+    color: #00a29a;
+}
+.profit .head .mini-btn:active{
+    opacity:.7;
+}
+
+
+
+/********第124期重算*****************************/
+
+.profit .parts tbody td sup{
+    font-size: .1rem;
+    border:1px solid red;
+    color:red;
+    border-radius:50%;
+    -webkit-transform: scale(.65);
+    transform: scale(.65);
+    width: .15rem;
+    height: .15rem;
+    text-align: center;
+    line-height: .15rem;
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    margin-left: -.02rem;
+}
+.profit .parts .rob a,
+.profit .parts .rob input{
+    display: inline-block;
+    width: .25rem;
+    background: none;
+    text-align: center;
+    padding: .02rem .1rem;
+    border: 1px solid #999;
+    border-radius:3px;
+    font-size: inherit;
+}
+.profit .parts .state{
+    position: relative;
+}
+.profit .parts .state .selected{
+    display: inline-block;
+    width: .4rem;
+    height: .22rem;
+    line-height: .22rem;
+    background:#00a29a;
+    border-radius:3px;
+    position: relative;
+    padding-right: .12rem;
+    color:#fff;
+}
+.profit .parts .state .selected a{
+    color:#fff;
+    display: inline-block;
+    width:100%;
+    height:100%;
+}
+.profit .parts .state .selected:after{
+    content:'\f0d7';
+    position: absolute;
+    top:0;
+    right: 0;
+    height: .22rem;
+    line-height: .22rem;
+    width: .15rem;
+    text-align: center;
+    font-family: FontAwesome;
+    -webkit-appearance: none;
+    font-size: .1rem;
+}
+.profit .parts .state select{
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+.profit .btn-open{
+    position: relative;
+    text-align: center;
+}
+.profit .btn-open a{
+    display: inline-block;
+    margin: .2rem .1rem;
+    flex: 1;
+    -webkit-flex: 1;
+    width: 40%;
+    height: .35rem;
+    line-height: .35rem;
+    border: 1px solid #00a29a;
+    border-radius: 3px;
+    color: #00a29a;
+}
+.profit .btn-open .btn1{
+    background:#00a29a;
+    color:#fff;
+}
+.profit .btn-open a:active{
+    opacity:.7;
+}
+
+
+
+/**********总盈亏*****************/
+
+.profit .list .people .icon{
+    background:url(../images/icon/icon-11.png)center no-repeat;
+    background-size:100% auto;
+}
+.profit .list .star .icon{
+    background:url(../images/icon/icon-12.png)center no-repeat;
+    background-size:100% auto;
+}
+.profit .tab tbody .td-timer span{
+    -webkit-transform:scale(.7);
+    transform:scale(.7);
+    display: inline-block;
+    margin-left:-.02rem;
+    margin-right:-.05rem;
+}
+
+
+/*************统计主页********************************/
+
+.homepage{
+    background:-webkit-linear-gradient(top,#fff,#ECF6F5,#8ACECB);
+}
+.homepage .logo{
+    padding: .2rem .7rem;
+    height: 1.8rem;
+}
+.homepage .logo img{
+    width:100%;
+    height:100%;
+}
+.homepage .list{
+    position: relative;
+    width:100%;
+}
+.homepage .list li{
+    text-align: center;
+    line-height:.5rem;
+    height:.5rem;
+    margin-top: .25rem;
+    padding:.1rem 0;
+}
+.homepage .list li a{
+    display: inline-block;
+    width: 2rem;
+    height: .5rem;
+    line-height: .5rem;
+    text-align: center;
+    color:#fff;
+    background:#00a29a;
+    border-radius:5px;
+    font-size: .18rem;
+    letter-spacing: 2px;
+}
+.homepage .list li a.active{
+    background:#006D67;
+}
+
+
+/*********第24轮数据详情***************/
+
+.profit .name{
+    width:100%;
+    text-align: center;
+    font-size: .13rem;
+    height:.3rem;
+    line-height: .3rem;
+}
+.profit .name>img{
+    display:inline-block;
+    widht:.16rem;
+    height:.16rem;
+    position:relative;
+    top:.03rem;
+}
+
+
+/**********玩家统计详情*****************/
+
+.profit .search{
+    padding:.1rem;
+    position: relative;
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+    font-size: .14rem;
+    text-align: justify;
+}
+.profit .search .inp{
+    margin-right: .1rem;
+    background:#e5e5e5;
+    border-radius:.2rem;
+    height: .25rem;
+    position: relative;
+    flex: 1;
+    -webkit-box-flex: 1;
+}
+.profit .search .inp input{
+    border:none;
+    background:none;
+    width: calc(100% - .4rem);
+    margin-right:.4rem;
+    font-size: .12rem;
+    line-height: .25rem;
+    text-indent: .1rem;
+    position: relative;
+    top: -.01rem;
+}
+.profit .search .inp a{
+    position: absolute;
+    top:0;
+    right:0;
+    width:.4rem;
+    height:.25rem;
+    line-height: .25rem;
+    text-align: center;
+    font-size: .16rem;
+    color:#999;
+}
+.profit .search .p1 input{
+    width: .5rem;
+    border: 1px solid #00a29a;
+    border-radius:3px;
+    background:#fff;
+    -webkit-appearance:none;
+    text-align:center;
+    font-size: .14rem;
+    padding: .02rem;
+}
+.profit .search .p2{
+    margin-left: .1rem;
+}
+.profit .search .p2 a{
+    padding: 0.03rem .1rem;
+    background:#00a29a;
+    color:#fff;
+    border-radius:.03rem;
+}
+.profit .tab td .details{
+    color:#00a29a;
+}
+.profit .p-tb{
+    border-top: 1px solid #00a29a;
+}
+.profit .p-tb thead td{
+    padding: .07rem 0;
+    font-size: .12rem;
+}
+.profit .p-flex-box{
+    padding: .1rem 0;
+    margin-top: -.2rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    font-size: .14rem;
+    position: relative;
+}
+.profit .p-flex-box>div{
+    padding: 0 .05rem;
+}
+.profit .p-flex-box>div>input{
+    display: inline-block;
+    width: .35rem;
+    background: none;
+    text-align: center;
+    padding: .02rem .1rem;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-size: inherit;
+}
+.profit .p-flex-box>div .select-box{
+    margin: 0 .1rem;
+    position: relative;
+    width: 1.4rem;
+    background: none;
+    text-align: center;
+    border: 1px solid #999;
+    border-radius: 3px;
+    font-size: inherit;
+}
+.profit .p-flex-box>div .select-box:after{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: .2rem;
+    text-align: center;
+    line-height: .23rem;
+    content: "\f0d7";
+    font-family: FontAwesome;
+}
+.profit .p-flex-box>div .select-box>*{
+    width: 100%;
+    padding: .02rem .2rem .02rem .1rem;
+    border: none;
+    font-size: inherit;
+    background: none;
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: .12rem;
+}
+.profit .p-flex-box>div .select-box input::-webkit-input-placeholder{
+    color: #666;
+}
+.profit .p-flex-box>div .select-box img{
+    display: inline;
+    position: relative;
+    top: .02rem;
+    height: .14rem;
+}
+.profit .alert-user .main{
+    padding: 10px !important;
+    max-height: 400px;
+    overflow-y: scroll;
+}
+.profit .user-list .item{
+    padding: 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-bottom: dashed 1px #ccc;
+}
+.profit .user-list .item:first-child{
+    border-top: none;
+}
+.profit .user-list .item:last-child{
+    border-bottom: none;
+}
+.profit .user-list .item .left{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.profit .user-list .item .right{
+    margin-left: .2rem;
+}
+.profit .user-list .item .right a{
+    padding: 0 2px;
+    font-size: .16rem;
+    color: red;
+}.profit .user-list .item .right .icon{
+     display: inline-block;
+     width: .15rem;
+     height: .15rem;
+     background: url("../images/icon/icon-20170103.png") no-repeat;
+     background-size: auto 100%;
+ }
+.profit .user-list .item .right .icon-1{background-position-x: center;}
+.profit .user-list .item .right .icon-2{background-position-x: left;}
+.profit .user-list .item .right .icon-3{background-position-x: right;}
+.profit .user-list .item .img-box{
+    margin-right: 5px;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    background-size: cover;
+    background-position: 50%;
+    border-radius: 50%;
+}
+.profit .user-list .item .p-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+    text-align: left;
+    font-size: 14px;
+}
+.profit .user-list .item .p-name img {
+    display: inline;
+    height: 16px;
+    position: relative;
+    top: 3px;
+}
+
+/*********************/
+.profit .part-1{font-weight: bold;}
+.profit .part-1 tbody td{
+    color:#000;
+    white-space: nowrap;
+}
+.profit .part-1 tbody td:after{
+    border-bottom:1px solid #9e9e9e;
+}
+.profit .tab-1 tbody td.last{
+    max-width: 1rem;
+    word-wrap: break-word !important;
+    white-space: normal;
+    padding: 0 .03rem;
+}
+.profit .part-1 tbody td:after{
+    border-bottom:1px solid #9e9e9e;
+}
+.profit .part-1 tbody tr:last-child td:after{
+    border-bottom: none;
+}
+.profit .part-1 .red{color: #e60013 !important;}
+.profit .part-1 .green{color: #0ba29a !important;}
+.profit .part-1 .gray{color: #666 !important;}
+
+.profit .part-1 table:last-child{table-layout: fixed;}
+
+.profit .part-1 table:last-child tbody td.bg{
+    background: #e3f6f5;
+}
+.profit .part-1 table:last-child{
+    border-bottom: solid 1px #9e9e9e;
+}
+.profit .part-1 table:last-child tbody td:before{
+    border-right: 1px solid #9e9e9e;
+}
+.profit .part-1 table:last-child tbody td:nth-child(1):before,
+.profit .part-1 table:last-child tbody td:nth-child(3):before,
+.profit .part-1 table:last-child tbody td:nth-child(4):before,
+.profit .part-1 table:last-child tbody td:nth-child(6):before,
+.profit .part-1 table:last-child tbody td:nth-child(7):before{
+    border-right: 1px solid #00514c;
+}
+.profit .part-1 .tag{
+    display: inline-block;
+    width: .1rem;
+    height: .1rem;
+    line-height: .11rem;
+    font-size: .07rem;
+    border-radius: 50%;
+    color: orange;
+    border: solid 1px orange;
+}
+.profit .part-1 .tag-2{
+    color: #00a29a;
+    border: solid 1px #00a29a;
+}
+.profit .part-2 .note{
+    font-size: .09rem;
+    padding: .03rem 0;
+    background: #00a29a;
+    color: #fff;
+    text-align: center;
+}
+
+/**********日志*****************/
+.log .p-flex-box .interval>p input{
+    border:0;
+    position: absolute;
+    top: 0;
+    left: .7rem;
+    height: .29rem;
+    line-height: .29rem;
+    font-size: .12rem;
+}
+.log .head-img{
+    width:.4rem;
+    height:.4rem;
+    border-radius:50%;
+    display: inline-block;
+    vertical-align: middle;
+}
+.log .p-flex-box .face{
+    display: inline-block;
+
+}
+.log .p-flex-box>div input.inp{
+    border:none;
+    height: .3rem;
+    line-height: .3rem;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    font-size: .14rem;
+}
+.log .p-flex-box>div ::-webkit-input-placeholder{
+    color:#00a29a;
+}
+.log .p-flex-box .timer,
+.log .p-flex-box .pepo{
+    display:inline-block;
+    width: .75rem;
+    border: 1px solid #00a29a;
+    position: relative;
+    height: .3rem;
+    line-height: .3rem;
+    border-radius:3px;
+    background: #fff;
+    padding: 0 .2rem 0 .1rem;
+    text-align:center;
+}
+.log .p-flex-box>div .fa,
+.log .p-flex-box .search a{
+    display:inline-block;
+    position: absolute;
+    top: .09rem;
+    right: .08rem;
+    color:#00a29a;
+}
+.log .parts .p-flex-box .left .search a .fa{
+    color:#fff;
+    right: .15rem;
+}
+.log .p-flex-box>div{
+    padding:0 .1rem;
+    position: relative;
+}
+.log .parts .p-flex-box ul{
+    display: none;
+    position: absolute;
+    top: .52rem;
+    left:0;
+    width:100%;
+    line-height: .4rem;
+    background: #f2f2f2;
+    box-shadow: 0 5px 5px rgba(0,0,0,.1);
+    box-sizing: border-box;
+    border-top: 1px solid #e5e5e5;
+    z-index: 99;
+}
+.log .parts .p-flex-box ul li{
+    background:#fff;
+    border-radius:.03rem;
+    margin:.1rem;
+    padding:0 .1rem;
+    position: relative;
+}
+.log .parts .p-flex-box li .tit{
+    position: absolute;
+    top:0;
+    left:.1rem;
+}
+.log .parts .p-flex-box li input{
+    width:100%;
+    text-align: right;
+    border:none;
+    background:none;
+    height:.4rem;
+    line-height:.4rem;
+    outline:none;
+    -webkit-appearance: none;
+}
+.log .parts .p-flex-box li.btn-true{
+    background:#00a29a;
+}
+.log .parts .p-flex-box li.btn-true a{
+    width:100%;
+    display: inline-block;
+    color:#fff;
+    text-align: center;
+}
+.log .parts .p1{
+    line-height: .25rem;
+    height: .25rem;
+}
+.log .parts .interval p{
+    line-height: .3rem;
+    border-bottom:1px solid #00a29a;
+    position: relative;
+    width: 1.8rem;
+}
+
+/*********24轮玩家详情*********/
+
+.profit .charts .bottom,
+.profit .charts .top{
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+    position: relative;
+    background:#00a29a;
+    color:#fff;
+    font-size: .1rem;
+    font-weight: bold;
+}
+.profit .charts .bottom{
+    margin-bottom:.1rem;
+}
+.profit .charts .bottom>div{
+    flex:1;
+    -webkit-box-flex:1;
+    font-size:.12rem;
+    line-height:.3rem;
+    height:.3rem;
+    text-align: center;
+}
+.profit .charts .top span{
+    display: block;
+    flex:1;
+    -webkit-box-flex:1;
+    font-size: .08rem;
+}
+.profit .charts .top .time{
+    text-align: right;
+}
+
+/**********日志**************/
+.profit .parts .right select{
+    position: absolute;
+    top: 0;
+    left: 0.1rem;
+    width: 1.07rem;
+    height: 100%;
+    opacity: 0;
+    font-size: .14rem;
+}
+.log .p-flex-box .search{
+    border:1px solid #00a29a;
+    border-radius:.03rem;
+    padding: 0;
+    height:.3rem;
+    line-height: .3rem;
+}
+.log .p-flex-box .search input{
+    height: .32rem;
+    border: 0;
+    background: none;
+    width: 100%;
+    text-indent: .05rem;
+}
+.log .p-flex-box div.search a{
+    top: 0;
+    width: .45rem;
+    height: 100%;
+    right: 0;
+    background: #00a29a;
+    color: #fff;
+}
+.log .p-flex-box div.left{
+    flex:1;
+    -webkit-box-flex:1;
+}
+
+/***********玩家余额****************/
+
+.profit .tab .play thead td {
+    background: none;
+    color: #00a29a;
+    border-bottom: 1px solid #00a29a;
+}
+
+
+/***********集齐福利*************/
+
+.boon .part-1{
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+    position: relative;
+    margin: 0 .1rem;
+    padding:.05rem 0;
+    border-bottom:.01rem solid #00a29a;
+}
+.boon .part-1>div{
+    flex: 1;
+    -webkit-box-flex:1;
+    font-weight:normal;
+    font-size: .12rem;
+    height: .25rem;
+    line-height: .25rem;
+}
+.boon .part-1 .left .icon{
+    display: inline-block;
+    width:.15rem;
+    height: .15rem;
+    background:#00a29a;
+    border-radius:50%;
+    margin:0 .05rem;
+    vertical-align: middle;
+}
+.boon .part-1 .right{
+    text-align: right;
+}
+.boon .part-1 .right a{
+    padding:.03rem .05rem;
+    background:#00a29a;
+    color:#fff;
+    border-radius:.03rem;
+    font-size: .12rem;
+}
+.boon .part-2{
+    margin:0 .1rem;
+    line-height: .22rem;
+    font-size: .12rem;
+}
+.boon .part-2 .p1{
+    font-size: .1rem;
+    line-height: .2rem;
+}
+.boon .part-1 .left .name{
+    width:.2rem;
+    height:.2rem;
+    border-radius:50%;
+    background-size:cover;
+    background-position: 50%;
+}
+.boon .part-1 .left{
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+}
+.boon .alert-box .text input{
+    border:1px solid #00a29a;
+    height:.25rem;
+    line-height: .25rem;
+    width:.8rem;
+    text-align: center;
+    border-radius:.03rem;
+}
+.boon .part-1 .right .number{
+    border: 1px solid #929191;
+    background: transparent;
+    color: #999;
+    display: none;
+}
+.boon .part-1 .right .number span{
+    margin-left:.05rem;
+}
+.boon div.part{
+    border-bottom:none;
+}
+
+
+/******福利****************/
+
+
+.weal .tab .chk-btn{
+    position: relative;
+    border:none;
+    background:none;
+    -webkit-appearance: none;
+    width: .2rem;
+    height: .2rem;
+    position: relative;
+    top: .05rem;
+    margin-right:.02rem;
+}
+.weal .tab .chk-btn:before{
+    content:'';
+    width:100%;
+    height:100%;
+    background: url(../images/icon/icon-02.png)no-repeat;
+    background-position: -2% 0;
+    background-size: 200% auto;
+    position: absolute;
+    top:0;
+    left: 0;
+}
+.weal .tab .chk-btn:checked:before{
+    background-position-x: 97%;
+}
+.weal .tab tbody td .view{
+    background:none;
+    border:1px solid #00a29a;
+    border-radius:.03rem;
+    color:#00a29a;
+    margin-left:.03rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.weal .tab caption label{
+    color:#666;
+    font-size:.12rem;
+}
+.weal .tab tr td.last{
+    padding-right:.4rem;
+}
+.weal .tab tr td.last .view{
+    position: absolute;
+    top: .025rem;
+    right:.05rem;
+}
+.weal .tab tr td{
+    padding: .06rem 0;
+}
+
+
+
+/************押注机器人******************/
+
+
+.pledge .banner{
+    position: relative;
+    background: -webkit-linear-gradient(top,#fff,#F0F8F8,#ADDDDB);
+    padding:.1rem;
+}
+.pledge .banner .tit{
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align:center;
+    position: relative;
+    height:.5rem;
+}
+.pledge .banner .tit>.left{
+    line-height:.5rem;
+}
+.pledge .banner .tit>.right{
+    line-height:.25rem;
+}
+.pledge .banner .tit>.right a{
+    font-size: .12rem;
+}
+.pledge .banner .tit>*{
+    text-align: center;
+    height:.5rem;
+    display: block;
+    font-size: .14rem;
+}
+.pledge .banner .tit .middle{
+    flex: 1;
+    -webkit-box-flex: 1;
+    position: relative;
+    top: -.1rem;
+}
+.pledge .icon{
+    display: inline-block;
+    width: .2rem;
+    height: .2rem;
+    background:url(../images/icon/icon_01.png)0 0 no-repeat;
+    background-size:550% auto;
+    position: relative;
+    top:.06rem;
+    margin-right: .04rem;
+}
+.pledge .banner .tit .middle .icon{
+    width: .5rem;
+    height: .4rem;
+    background:url(../images/icon/logo_03.png)center no-repeat;
+    background-size:auto 100%;
+}
+.pledge .banner .tit .recharge{
+    background: #00a29a;
+    color:#fff;
+    border-radius:.03rem;
+    width:.45rem;
+    height:.22rem;
+    line-height: .22rem;
+    display: inline-block;
+}
+.pledge .main .top{
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+    position: relative;
+}
+.pledge .main .top>div{
+    display: block;
+    flex:1;
+    -webkit-box-flex:1;
+    height: .25rem;
+    line-height: .25rem;
+    text-align: center;
+    position: relative;
+    font-size: .12rem;
+}
+.pledge .main .top>div:nth-child(2):before{
+    content:'';
+    height: .16rem;
+    pointer-events: none;
+    border-left:1px solid #666;
+    position: absolute;
+    left:0;
+    top: .07rem;
+}
+.pledge .main .top>div:nth-child(2):after{
+    content:'';
+    height: .16rem;
+    pointer-events: none;
+    border-right: 1px solid #666;
+    position: absolute;
+    right:0;
+    top: .07rem;
+}
+.pledge .main .top>div .icon-1{
+    background-position-x: -.2rem;
+}
+.pledge .main .top>div .icon-2{
+    background-position-x: -.47rem;
+    width: .24rem;
+    background-size: 503% auto;
+}
+.pledge .main .top>div .icon-3{
+    background-position-x: -.66rem;
+}
+.pledge .main .grown .right .icon-4{
+    background-position-x: -.87rem;
+    vertical-align: top;
+    top: .04rem;
+}
+.pledge .grown,
+.pledge .container .list .title{
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+    position: relative;
+}
+.pledge .grown{
+    padding:0 .1rem;
+    background:#e5e5e5;
+    margin: .05rem 0;
+}
+.pledge .grown>div{
+    flex: 1;
+    -webkit-box-flex: 1;
+    text-align: center;
+    height: .25rem;
+    line-height: .25rem;
+    font-size: .12rem;
+}
+.pledge .container .list .title{
+    height: .2rem;
+    line-height: .2rem;
+    font-size: .12rem;
+}
+.pledge .container .list li{
+    padding:0 .15rem;
+    position: relative;
+}
+.pledge .container .list .title .inp{
+    position: relative;
+    padding: 0 .2rem 0 .08rem;
+    top: -.02rem;
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+}
+.pledge .container .list .title .inp:before{
+    content: "";
+    height:.17rem;
+    border-left:.02rem solid #00a29a;
+    position: absolute;
+    top: .04rem;
+    left:0;
+}
+.pledge .container .list .title .inp>a{
+    display: inline-block;
+    line-height:.25rem;
+    font-size: .12rem;
+}
+.pledge .container .list .title .inp .btn{
+    width: .38rem;
+    height: .17rem;
+    line-height: .17rem;
+    border:.01rem solid #00a29a;
+    background:#fff;
+    border-radius:.1rem;
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+}
+.pledge .container .list .title .state>span{
+    position: relative;
+    padding-left:.1rem;
+}
+.pledge .container .list .title .state>span:before{
+    content:'';
+    width:.05rem;
+    height: .05rem;
+    background:#00a29a;
+    border-radius:50%;
+    position: absolute;
+    top:.05rem;
+    left:.02rem;
+}
+.pledge .container .list .title .inp a:first-child{
+    position: relative;
+    margin-right: .05rem;
+}
+.pledge .container .list .title .inp .btn a{
+    display: block;
+    font-size:.09rem;
+    width: .15rem;
+    height: .15rem;
+    line-height: .15rem;
+    margin: 0 .02rem;
+    position: relative;
+    text-align: center;
+    border-radius:50%;
+}
+.pledge .container .list .title .inp .btn a.active{
+    background:#00a29a;
+    color:#fff;
+}
+.pledge .container .list .part{
+    border:.01rem solid #e5e5e5;
+    border-top-left-radius: .05rem;
+    border-top-right-radius:.05rem;
+    margin: .05rem 0;
+    background: #fff;
+}
+.pledge .container .list .part-2,
+.pledge .container .list .part-2 .right{
+    height: .3rem !important;
+    line-height: .3rem !important;
+}
+.pledge .container .list .part>div,
+.pledge .container .list .part-1 .left,
+.pledge .container .list .part .right,
+.pledge .container .list .part .right .type{
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+}
+.pledge .container .list .part .right,
+.pledge .container .list .part .left .name{
+    flex: 1;
+    -webkit-box-flex: 1;
+}
+.pledge .container .list .part-1{
+    border-bottom:.01rem solid #e5e5e5;
+}
+.pledge .container .list .part .left .head{
+    width:.3rem;
+    height:.3rem;
+    background-size:cover;
+    border-radius:50%;
+    background-position-y:50%;
+    margin:.05rem;
+}
+.pledge .container .list .part .left .name{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: .12rem;
+}
+.pledge .container .list .part .left .name img{
+    display: inline-block;
+    width:.18rem;
+    height: .18rem;
+    vertical-align: middle;
+}
+.pledge .container .list .part .left{
+    padding-right:.05rem;
+    position: relative;
+    width:1rem;
+    height: .4rem;
+    line-height:.4rem;
+    font-size: .12rem;
+}
+.pledge .container .list .part .left:after{
+    content:'';
+    border-right:.01rem solid #666;
+    height: .2rem;
+    position: absolute;
+    top: .1rem;
+    right:0;
+}
+.pledge .container .list .part-2 .left:after{
+    top: .06rem;
+    height: .18rem;
+}
+.pledge .container .list .part .right{
+    padding: 0 .05rem;
+    height: .4rem;
+    font-size: .12rem;
+}
+.pledge .container .list .part .right .num{
+    flex:1;
+    -webkit-box-flex:1;
+    height:100%;
+    line-height: 100%;
+    background:transparent;
+    border:none;
+    outline: none;
+    display: block;
+    -webkit-appearance: none;
+    font-size: .12rem;
+}
+.pledge .container .list .part .right .a1{
+    width: .2rem;
+    height:.2rem;
+    border-radius:50%;
+    background:-webkit-radial-gradient(#13cec5, #00a29a);
+    color:#fff;
+    text-align: center;
+    line-height: .2rem;
+    font-size:.08rem;
+    white-space: nowrap;
+    margin:0 .02rem;
+}
+.pledge .container .list .part .right .a2{
+    padding: .03rem .02rem;
+    background:#00a29a;
+    margin: 0.02rem .01rem 0;
+    color:#fff;
+    border-radius:.03rem;
+    font-size:.08rem;
+}
+.pledge .container .list .part .right .a1.active{
+    background: -webkit-radial-gradient(#ef6374, #c60f25);
+}
+.pledge .container .list .part .right .type{
+    flex: 1;
+    -webkit-box-flex: 1;
+}
+.pledge .container .list .part .right .view{
+    width: .4rem;
+    text-align: right;
+}
+.pledge .container .list .part .right .view a{
+    padding: .01rem .05rem;
+    border:.01rem solid #00a29a;
+    color:#00a29a;
+    border-radius:.03rem;
+    font-size:.1rem;
+}
+.pledge .container .list .part-2 .left{
+    background: #fff;
+    color: #00a29a;
+    letter-spacing: .02rem;
+    text-align: center;
+    padding-right: 0;
+    width: 1.05rem;
+    height: .3rem;
+    line-height: .3rem;
+}
+
+
+/****************登陆*****************/
+
+.load,.load .main{
+    position: relative;
+    background:#fff;
+}
+.load .main{
+    margin-top:.5rem;
+}
+.load .main .list{
+    padding:.1rem;
+    text-align: center;
+}
+.load .main .list li{
+    height:.4rem;
+    line-height: .4rem;
+    text-align:center;
+    margin-bottom: .4rem;
+    font-size: .16rem;
+}
+.load .main .list input{
+    border:.01rem solid #00a29a;
+    border-radius:.05rem;
+    height: .4rem;
+    line-height: .4rem;
+    text-indent: .05rem;
+    outline: none;
+    -webkit-appearance: none;
+    background:transparent;
+    width: 2rem;
+    font-size:.12rem;
+    margin-left: .05rem;
+}
+.load .main .btn,
+.load .main .why{
+    text-align: center;
+    position: relative;
+    margin-top: .5rem;
+}
+.load .main .why{
+    margin-top:.1rem;
+}
+.load .main .btn a{
+    display: inline-block;
+    width: 1.3rem;
+    height: .35rem;
+    line-height: .35rem;
+    text-align: center;
+    color:#fff;
+    background:#00a29a;
+    border-radius:.05rem;
+    font-size:.14rem;
+    letter-spacing: .03rem;
+}
+.load .main .why a{
+    font-size:.12rem;
+}
+
+
+/***********充值*************/
+
+.load .main .list .title{
+    font-size:.16rem;
+    margin-bottom:.1rem;
+}
+.load .main .list .text input{
+    width:2.3rem;
+}
+
+
+
+/***********当前余额*************/
+
+.nowaday .banner{
+    background: -webkit-linear-gradient(top,#fff,#F0F8F8,#ADDDDB);
+    padding:.1rem;
+}
+.nowaday .banner .now{
+    font-size:.14rem;
+    height:.3rem;
+    line-height: .3rem;
+}
+.nowaday .banner .total{
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+    height: .3rem;
+    line-height: .3rem;
+}
+.nowaday .banner .total>div{
+    flex:1;
+    -webkit-box-flex: 1;
+    font-size:.12rem;
+}
+.nowaday .container table{
+    width:100%;
+    border-spacing: 0;
+    position: relative;
+    text-align: center;
+    background:#fff;
+}
+.nowaday .container table thead td{
+    position: relative;
+    line-height: .25rem;
+    border-bottom:.05rem solid #f5f5f5;
+    padding:.02rem 0;
+}
+.nowaday .container table thead td a{
+    font-size:.12rem;
+}
+.nowaday .container table thead td:before{
+    content:'';
+    border-right: .01rem solid #c5c2c2;
+    height: .2rem;
+    position: absolute;
+    top: .04rem;
+    right:0;
+}
+.nowaday .container table thead td:last-child:before{
+    border-right:none;
+}
+.nowaday .container table tbody td{
+    border-bottom:.01rem solid #e5e5e5;
+    padding:.02rem 0;
+    font-size: .12rem;
+}
+.nowaday .container table tbody td.face{
+    max-width:.3rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.nowaday .container table tbody td.face img{
+    vertical-align: middle;
+    display: inline-block;
+    width:.16rem;
+    height:.16rem;
+}
+.nowaday table .icon{
+    display: inline-block;
+    width: .18rem;
+    height: .18rem;
+    background:url(../images/icon/icon04_03.png)center no-repeat;
+    background-size:100% auto;
+    position: relative;
+    top: .04rem;
+    margin-right: .04rem;
+}
+.nowaday table .icon-2{
+    background: url(../images/icon/icon_01.png).02rem 0 no-repeat;
+    background-size: 535% auto;
+}
+.nowaday table .icon-3{
+    background: url(../images/icon/icon_01.png)-.38rem 0 no-repeat;
+    background-size: 535% auto;
+}
+.nowaday table .icon-4{
+    background: url(../images/icon/icon04_05.png)center no-repeat;
+    background-size: auto 100%;
+    height: .15rem;
+    position: relative;
+    vertical-align: top;
+}
+
+
+
+/****************自动押注****************/
+
+.auto .main .part{
+    position: relative;
+    background:#fff;
+    margin:.1rem;
+    border:.01rem solid #00a29a;
+    border-radius:.03rem;
+    padding-bottom: .05rem;
+}
+.auto .main .part .title{
+    line-height:.3rem;
+    height: .3rem;
+    font-size:.14rem;
+    padding:0 .1rem 0 .2rem;
+    color:#00a29a;
+    border-bottom: .01rem dashed #e5e5e5;
+    position: relative;
+}
+.auto .main .part .title:before{
+    content:'';
+    width:.06rem;
+    height:.06rem;
+    background:#00a29a;
+    border-radius:50%;
+    position: absolute;
+    top:.12rem;
+    left:.1rem;
+}
+.auto .main .part .text {
+    font-size: .12rem;
+    padding: .05rem .1rem;
+}
+.auto .main .part .text .tips{
+    line-height: .2rem;
+}
+.auto .main .part .text .p1 input{
+    background:transparent;
+    border: .01rem solid #00a29a;
+    border-radius:.03rem;
+    line-height: .3rem;
+    height: .3rem;
+    text-indent: .04rem;
+    width:100%;
+    margin-top: .05rem;
+}
+.auto .main .part-2 .text .p1>input{
+    width:.5rem;
+    height: .25rem;
+    text-align: center;
+    text-indent: 0;
+    margin: 0 .05rem 0;
+}
+
+.auto .main .part-2 .text .tips{
+    flex:1;
+    -webkit-box-flex:1;
+    margin-right:.1rem;
+}
+.auto .main .part .text .blue{
+    font-size:.11rem;
+    line-height: .2rem;
+    height: .2rem;
+}
+.auto .submit{
+    text-align: center;
+    height:.5rem;
+    line-height: .5rem;
+    padding:0 .1rem;
+}
+.auto .submit a{
+    display: inline-block;
+    width:1rem;
+    height:.3rem;
+    line-height: .3rem;
+    background:#00a29a;
+    color:#fff;
+    border-radius:.03rem;
+    font-size:.14rem;
+    letter-spacing: .03rem;
+}
+.auto .main .part-1 .text .img{
+    overflow: hidden;
+}
+.auto .main .part-1 .text .img a>.fa-times-circle {
+    position: absolute;
+    top: -.05rem;
+    right: -.05rem;
+    color: #ff3b30;
+    z-index: 2;
+    background: #fff;
+    width: .2rem;
+    height: .2rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.auto .main .part-1 .text .img-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50%;
+}
+.auto .main .part-1 .text .img a{
+    position: relative;
+    margin: .1rem .1rem 0 0;
+    display: block;
+    width: .4rem;
+    height: .4rem;
+    line-height: .4rem;
+    text-align: center;
+    border: solid 1px #e5e5e5;
+    border-radius: .03rem;
+    box-sizing: border-box;
+    color: #ccc;
+    font-size: .2rem;
+    background: #fff;
+    float: left;
+}
+.auto .main div.part-1 .text .img input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.auto .main div.part-1 .text .p1 input:before{
+    content:'';
+    width:100%;
+    height:100%;
+    border:1px solid #00a29a;
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+
+/**************押注详情****************/
+.detain .list,
+.detain .list .left{
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+}
+.detain .list .left .head-img{
+    width:.3rem;
+    height: .3rem;
+    background-size:cover;
+    border-radius:50%;
+    background-position-y: 50%;
+}
+.detain .list .left .name{
+    text-align: left;
+    padding-left:.05rem;
+}
+.detain .list .left{
+    flex:1;
+    -webkit-box-flex: 1;
+}
+.detain .list .right{
+    font-size:.14rem;
+}
+
+
+/***************聊天****************/
+
+.chat .text-main .text-inp{
+    height: 1rem;
+    line-height:.2rem;
+    padding: .05rem;
+    margin: 0 auto .05rem;
+    border:.01rem solid #00a29a;
+    border-radius:.03rem;
+    width: 2.5rem;
+    overflow-y: scroll;
+    font-size: .12rem;
+}
+.chat .text-main .text-inp img{
+    display: inline-block;
+    vertical-align: middle;
+}
+.chat .text-main .list{
+    position: relative;
+    padding: .1rem 0;
+    text-align: center;
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+    padding-bottom: .4rem;
+    border-bottom: .01rem solid #00a29a;
+    border-top: .01rem solid #00a29a;
+    margin-top: .1rem;
+}
+.chat .text-main .list ul{
+    overflow: hidden;
+    text-align: center;
+    min-height:.4rem;
+}
+.chat .text-main .list li{
+    float: left;
+    text-align: center;
+    width: 10%;
+}
+.chat .text-main .list li>img{
+    display: inline-block;
+    width: .24rem;
+    height: .24rem;
+}
+.chat .text-main .btn{
+    text-align: center;
+    height:.5rem;
+    line-height: .5rem;
+    margin-top:.15rem;
+}
+.chat .text-main .btn a{
+    display: inline-block;
+    width:1rem;
+    height:.35rem;
+    line-height: .35rem;
+    text-align: center;
+    background:#00a29a;
+    color:#fff;
+    border-radius:.03rem;
+    letter-spacing: .03rem;
+}
+.chat .alert .main,
+.chat .alert .swiper-container,
+.chat .alert .swiper-slide,
+.chat .alert .list,
+.chat .alert .btnbox{
+    width:2.8rem ;
+}
+.chat .alert .text-main .box{
+    position:relative;
+    text-align: right;
+}
+.chat .alert .text-main .img{
+    overflow: hidden;
+    height: 1.5rem;
+    border-top: .01rem solid #00a29a;
+    border-bottom: .01rem solid #00a29a;
+    overflow-y: scroll;
+    position: relative;
+    padding-bottom: .1rem;
+}
+.chat .alert .text-main .box .edit{
+    padding: .03rem .08rem;
+    border-radius:.03rem;
+    color: #fff;
+    font-size:.12rem;
+    background: #00a29a;
+    margin: 0 0 .06rem;
+    display: inline-block;
+}
+.chat .alert .text-main .img a>.fa-times-circle {
+    position: absolute;
+    top: -.05rem;
+    right: -.05rem;
+    color: #ff3b30;
+    z-index: 2;
+    background: #fff;
+    width: .2rem;
+    height: .2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+}
+.chat .alert .text-main .img .img-box{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: 50%;
+}
+.chat .alert .text-main .img a{
+    position: relative;
+    margin: .1rem .05rem 0;
+    display: block;
+    width: .45rem;
+    height: .45rem;
+    line-height: .45rem;
+    text-align: center;
+    border: solid 1px #e5e5e5;
+    border-radius: 3px;
+    box-sizing: border-box;
+    color: #ccc;
+    font-size: .2rem;
+    background: #fff;
+    float: left;
+}
+.chat .alert .text-main .img input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+
+/*******上下分明细**********/
+
+.detail .parts .p-flex-box>div{
+    flex:1;
+    -webkit-box-flex: 1;
+}
+.detail .parts .p-flex-box .right{
+    text-align: right;
+}
+.detail .parts .p-flex-box .right .pepo{
+    color:#00a29a;
+}
+.detail .parts .p-flex-box .right .pepo .fa{
+    right:.12rem;
+}
+.detail .parts .num{
+    display: flex;
+    display: -webkit-box;
+    align-items: center;
+    -webkit-box-align: center;
+    position: relative;
+}
+.detail .parts .num>a{
+    display: block;
+    flex: 1;
+    -webkit-box-flex: 1;
+    text-align: center;
+    height:.3rem;
+    line-height: .3rem;
+    font-size: .12rem;
+}
+.detail .parts .search-box{
+    background:#e5e5e5;
+    border-radius:1rem;
+    height:.3rem;
+    line-height: .3rem;
+    position: relative;
+    flex: 1;
+    -webkit-box-flex: 1;
+}
+.detail .parts .search-box input{
+
+    padding-left: .1rem;
+}
+.detail .parts .search-box .fa{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #999;
+    width: .4rem;
+    height: .3rem;
+    line-height: .3rem;
+    text-align: center;
+}
+.detail .parts .right .sel{
+    right:.1rem;
+    left:auto;
+}
+.detail .parts .search{
+    border-bottom: .05rem solid #f5f5f5;
+}
+.detail .parts{
+    background:#fff;
+}
+input {
+    border:none;
+    background:none;
+}
+
+
+/************玩法赔率***********/
+.play .tab table{
+    table-layout: fixed;
+}

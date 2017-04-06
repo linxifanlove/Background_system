@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>上下分明细</title>
+    <link href="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/font-awesome.css" rel="stylesheet">
+    <link href="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/plugin.css" rel="stylesheet">
+    <link href="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/profit.css" rel="stylesheet">
+
+    <script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/jquery.js"></script>
+    <script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/jquery_002.js"></script>
+    <script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/json2.js"></script>
+    <script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/loading.js"></script>
+    <script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/layer.js"></script><link href="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/layer.css" type="text/css" rel="styleSheet" id="layermcss">
+    <script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/emoji.js"></script>
+    <script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/utils.js"></script>
+    <script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86%E6%98%8E%E7%BB%86_files/popodataime.js"></script><style id="shcl1" type="text/css">@-o-keyframes shcl1_bounce{0%{visibility:visible;-o-transform:scale(1)}80%{-o-transform:scale(.3)}100%{-o-transform:scale(1)}}@-ms-keyframes shcl1_bounce{0%{visibility:visible;-ms-transform:scale(1)}80%{-ms-transform:scale(.3)}100%{-ms-transform:scale(1)}}@-webkit-keyframes shcl1_bounce{0%{visibility:visible;-webkit-transform:scale(1)}80%{-webkit-transform:scale(.3)}100%{-webkit-transform:scale(1)}}@-moz-keyframes shcl1_bounce{0%{visibility:visible;-moz-transform:scale(1)}80%{-moz-transform:scale(.3)}100%{-moz-transform:scale(1)}}@keyframes shcl1_bounce{0%{visibility:visible;transform:scale(1)}80%{transform:scale(.3)}100%{transform:scale(1)}}</style></head><body><div class="hidden"><style>body,.popodatetime ul,.popodatetime p{margin:0;padding:0;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0)}.popodatetime .hidden{display:none}.popodatetime{position:fixed;top:0;left:0;width:100%;height:100%;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:18px;color:#000;z-index:999999}.popodatetime .p-cover{position:absolute;height:100%;width:100%;background:rgba(0,0,0,.6);animation:fadeIn ease .2s both;-webkit-animation:fadeIn ease .2s both;z-index:0}.popodatetime .p-box{position:absolute;top:0;left:0;width:100%;height:100%;display:-webkit-box;display:-ms-flexbox;display:-webkit-flex;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;-webkit-align-items:center;align-items:center}.popodatetime .p-main{position:relative;margin:0 auto;padding:0 15px;max-width:400px;-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;animation:fadeIn ease .2s both;-webkit-animation:fadeIn ease .2s both;z-index:1}.popodatetime.close .p-cover{animation:fadeOut ease .2s both;-webkit-animation:fadeOut ease .2s both}.popodatetime.close .p-main{animation:fadeOut ease .2s both;-webkit-animation:fadeOut ease .2s both}@-webkit-keyframes fadeIn{0%{opacity:0}100%{opacity:1}}@-webkit-keyframes fadeOut{0%{opacity:1}100%{opacity:0}}.popodatetime .p-main .p-scroll{position:relative;align-items:center;overflow:hidden}.popodatetime .p-main .p-scroll:before{content:"";position:absolute;z-index:0;top:50px;left:0;width:100%;height:50px;background:#f1f1f1;pointer-events:none}.popodatetime .p-main .p-scroll:after{position:absolute;left:0;top:0;width:200%;height:200%;content:"";border:solid 1px #ddd;transform:scale(.5);-webkit-transform:scale(.5);transform-origin:0 0;-webkit-transform-origin:0 0;pointer-events:none}.popodatetime .p-main .p-datetime{background:#fff;overflow:hidden;border-radius:3px;box-shadow:0 0 5px rgba(0,0,0,.3)}.popodatetime .p-main .p-result{text-align:center;height:50px;line-height:50px;box-shadow:0 0 10px rgba(0,0,0,.2)}.popodatetime .p-main .p-title{overflow:hidden}.popodatetime .p-main .p-title li{position:relative;width:20%;margin:10px 0;color:#999;text-align:center;list-style-type:none;float:left}.popodatetime .p-main .p-container{position:relative;z-index:1;width:20%;height:150px;float:left;overflow:hidden}.popodatetime .p-main .p-container:nth-child(4):after{position:absolute;left:0;top:0;width:1px;height:100%;content:"";border-right:solid 1px #ddd;-webkit-transform:scaleX(.5);transform:scaleX(.5)}.popodatetime .p-wrapper{-webkit-transition-timing-function:ease-out}.popodatetime .p-wrapper>div{text-align:center;height:50px;line-height:50px;font-family:"Arial";cursor:pointer}.popodatetime .p-button{position:relative;line-height:42px;font-size:18px;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex}.popodatetime .p-button:after{content:"";position:absolute;left:0;top:0;width:100%;height:1px;border-top:1px solid #d5d5d6;color:#d5d5d6;-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:scaleY(0.5);transform:scaleY(0.5)}.popodatetime .p-button a{position:relative;display:block;-webkit-box-flex:1;-webkit-flex:1;-ms-flex:1;flex:1;text-align:center;color:#000;text-decoration:none}.popodatetime .p-button a.confirm{color:#10aeff;}.popodatetime .p-button a.clear{color:#E64340;}.popodatetime .p-button a:after{content:" ";position:absolute;left:0;top:0;width:1px;height:100%;border-left:1px solid #d5d5d6;color:#d5d5d6;-webkit-transform-origin:0 0;transform-origin:0 0;-webkit-transform:scaleX(0.5);transform:scaleX(0.5)}.popodatetime .p-main.onlydate .p-title li,.popodatetime .p-main.onlydate .p-container{width:33.333333%}.popodatetime .p-main.onlytime .p-title li,.popodatetime .p-main.onlytime .p-container{width:50%}.popodatetime .p-main.onlyhour .p-title li,.popodatetime .p-main.onlyhour .p-container{width:25%}.popodatetime .p-top .p-main,.popodatetime .p-bottom .p-main{position:absolute;top:0;left:0;margin:0;padding:0;width:100%;border-radius:0}.popodatetime .p-bottom .p-main{top:auto;bottom:0}.popodatetime .p-inline .p-main{margin:0;padding:0}.</style></div>
+
+
+    <div class="content profit log detail">
+        <header>
+            <div class="top-tit">上下分明细</div>
+        </header>
+        <div class="tab parts">
+            <div class="p-flex-box">
+                <div class="left">
+                    <div class="timer">
+                        <input class="inp" readonly="readonly" placeholder="全部时间" type="text">
+                        <i class="fa fa-caret-down"></i>
+                    </div>
+                    <div class="interval" style="display: none">
+                        <p class="timer-p1"></p>
+                        <p class="timer-p2"></p>
+                    </div>
+                </div>
+                <div class="right">
+                    <a class="pepo" href="javascript:void(0)">所有人 <i class="fa fa-caret-down"></i></a>
+                    <select class="sel" id="drpRoleId">
+                        <option value="0" selected="selected">所有人</option>
+                        <option value="-1">托</option>
+                        <option value="-2">玩家</option>
+                        <option value="1">管理</option>
+                        <option value="2">车手</option>
+                        <option value="3">水军</option>
+                        <option value="4">财务</option>
+                        <option value="5">股东</option>
+                        <option value="6">发包</option>
+                    </select>
+                </div>
+                <ul>
+                    <li>
+                        <span class="tit">开始时间：</span>
+                        <input class="p-datetime p2" placeholder="选择开始时间" readonly="readonly" id="txtStartDate" type="text">
+                    </li>
+                    <li>
+                        <span class="tit">结束时间：</span>
+                        <input class="p-datetime p3" placeholder="选择结束时间" readonly="readonly" id="txtEndDate" type="text">
+                    </li>
+                    <li class="btn-true"><a style="cursor:pointer;" onclick="Search()">确定</a></li>
+                </ul>
+            </div>
+            <div class="num">
+                <a>上分：<span id="labAddMoney">35000</span>分</a>
+                <a>下分：<span id="labSubMoney">0</span>分</a>
+                <a>人数：<span id="labUserCount">6</span>人</a>
+            </div>
+            <div class="search">
+                <div class="search-box">
+                    <input id="txtNickName" placeholder="请输入玩家昵称" type="search">
+                    <i class="fa fa-search" onclick="Search()"></i>
+                </div>
+            </div>
+            <table class="p-tb">
+                <caption>共<span id="labCount">8</span>条记录</caption>
+                <thead>
+                    <tr>
+                        <td>时间</td>
+                        <td>昵称</td>
+                        <td>身份</td>
+                        <td>明细</td>
+                        <td>变动前</td>
+                        <td>变动后</td>
+                    </tr>
+                </thead>
+                <tbody id="divList">
+                <tr>  <td>2017-04-03 15:24:43</td>  <td class="face">Kevin</td><td class="red">发包</td>  <td class="red">上分10000</td>  <td>0</td>  <td>10000</td></tr><tr>  <td>2017-04-03 14:32:17</td>  <td class="face">林羽然</td><td class="red">管理</td>  <td class="red">上分1000</td>  <td>10000</td>  <td>11000</td></tr><tr>  <td>2017-04-03 14:32:10</td>  <td class="face">林羽然</td><td class="red">管理</td>  <td class="red">上分10000</td>  <td>0</td>  <td>10000</td></tr><tr>  <td>2017-04-02 16:51:53</td>  <td class="face">Cecilia_</td><td>玩家</td>  <td class="red">上分10000</td>  <td>0</td>  <td>10000</td></tr><tr>  <td>2017-04-02 16:30:33</td>  <td class="face">云富豪037</td><td>玩家</td>  <td class="red">上分1000</td>  <td>0</td>  <td>1000</td></tr><tr>  <td>2017-04-02 16:30:33</td>  <td class="face">Kevin</td><td>玩家</td>  <td class="red">上分1000</td>  <td>0</td>  <td>1000</td></tr><tr>  <td>2017-04-02 16:30:33</td>  <td class="face">Kevin</td><td class="red">发包</td>  <td class="red">上分1000</td>  <td>0</td>  <td>1000</td></tr><tr>  <td>2017-04-02 16:30:33</td>  <td class="face">洛卡勋爵</td><td class="red">管理</td>  <td class="red">上分1000</td>  <td>0</td>  <td>1000</td></tr></tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(function () {
+            //select
+            $("#drpRoleId").change(function () {
+                var optionText = $(this).find('option:checked').text();
+                $(this).siblings('.pepo').html(optionText + "<i class='fa fa-caret-down'></i>");
+                Search();
+            })
+            //时间
+            $(".p-date").popodatetime({
+                time: false
+            });
+            $(".p-datetime").popodatetime();
+
+            //选择时间段
+            $(".timer").click(function () {
+                $(this).parents(".p-flex-box").find("ul").toggle();
+            })
+            $(".log .p-flex-box ul .btn-true").click(function () {
+                $(this).parents("ul").hide();
+            })
+            $('.btn-true').click(function () {
+                $(".timer").hide();
+                $(".interval").show();
+                var text1 = $(".p2").val();
+                var text2 = $(".p3").val();
+                $('.timer-p1').text('起：' + text1)
+                $(".timer-p2").text('止：' + text2)
+            })
+
+        })
+
+    </script>
+
+    <script type="text/javascript">
+
+        window.g = {
+            pageIndex: 1,
+            pageSize: 40,
+            isloading: false,
+            isloadend: false
+        };
+
+        function Search() {
+            window.g = {
+                pageIndex: 1,
+                pageSize: 40,
+                isloading: false,
+                isloadend: false
+            };
+            $("#divList").html("");
+            LoadList();
+        }
+
+        /** 加载列表 **/
+        function LoadList() {
+
+            if (g.isloading || g.isloadend) {
+                return;
+            }
+
+            var vcStartDate = $.trim($("#txtStartDate").val());
+            var vcEndDate = $.trim($("#txtEndDate").val());
+            var nRoleId = $("#drpRoleId").val();
+            var vcNickName = $.trim($("#txtNickName").val());
+
+            /** 正在加载 **/
+            g.isloading = true;
+            loading.show();
+            post("/api/mchinterface.asmx/AddMoneyList", { nPageIndex: g.pageIndex, nPageSize: g.pageSize, vcStartDate: vcStartDate, vcEndDate: vcEndDate, nRoleId: nRoleId, vcNickName: vcNickName }, function (ds) {
+                loading.hide();
+                g.isloading = false;
+
+                var dt = ds[0];
+
+                var s = '';
+                for (var i = 0; i < dt.length; i++) {
+
+                    var dr = dt[i];
+
+                    var nick = dr.vcBetNickName == '' ? ReplaceBase64Img(dr.vcBase64WeixinName) : dr.vcBetNickName;
+                    var rolename = '';
+                    if (dr.nRoleId == 1) rolename = '<td class="red">管理</td>';
+                    else if (dr.nRoleId == 2) rolename = '<td class="red">车手</td>';
+                    else if (dr.nRoleId == 3) rolename = '<td class="red">水军</td>';
+                    else if (dr.nRoleId == 4) rolename = '<td class="red">财务</td>';
+                    else if (dr.nRoleId == 5) rolename = '<td class="red">股东</td>';
+                    else if (dr.nRoleId == 6) rolename = '<td class="red">发包</td>';
+                    else if (dr.nIsTuo == 1) rolename = '<td class="blue">托</td>';
+                    else rolename = '<td>玩家</td>';
+
+                    s += '<tr>';
+                    s += '  <td>'+dr.dtCreateTime+'</td>';
+                    s += '  <td class="face">' + nick + '</td>';
+                    s +=  rolename;
+                    s += '  <td class="'+ (parseInt(dr.dmChangeMoney)>0?'red':'blue') +'">'+ (parseInt(dr.dmChangeMoney)>0?'上分':'下分') + Math.abs((dr.dmChangeMoney)) + '</td>';
+                    s += '  <td>'+parseInt(dr.dmPreMoney)+'</td>';
+                    s += '  <td>'+parseInt(dr.dmCurrentMoney)+'</td>';
+                    s += '</tr>';
+
+                }
+
+                $("#divList").append(s);
+
+                $("#labCount").html(ds[1][0].nRecordCount);
+                $("#labAddMoney").html(parseInt(ds[1][0].dmAddMoney));
+                $("#labSubMoney").html(Math.abs(parseInt(ds[1][0].dmSubMoney)));
+                $("#labUserCount").html(ds[1][0].nUserCount);
+
+                var recordCount = parseInt(ds[1][0].nRecordCount);
+                var pageCount = parseInt((recordCount + g.pageSize - 1) / g.pageSize);
+                if (g.pageIndex == pageCount) {
+                    g.isloadend = true;
+                }
+                else {
+                    g.pageIndex = g.pageIndex + 1;
+                }
+
+            }, "text");
+
+        }
+
+        /** 初始化滚屏加载 **/
+        $(window).scroll(function () {
+            if (g.isloading || g.isloadend) return;
+            if (document.documentElement.clientHeight + document.body.scrollTop - document.body.scrollHeight >= -55) {
+                LoadList();
+            }
+        });
+
+        LoadList();
+
+    </script><div id="divLoading" style="position: fixed; z-index: 2147483646; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); text-align: center; display: none;">  <div class="data_loading" style="width: 100px; height: 100px; margin: -50px auto 0px -50px; position: absolute; z-index: 2147483647; top: 50%; left: 50%;"><div class="shcl" style="position: relative; width: 98px; height: 98px; margin-left: 1px; margin-top: 1px;"><div style="left: 40px; top: 0px; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 60px; top: 5px; animation-delay: 0.0833333s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 75px; top: 20px; animation-delay: 0.166667s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 80px; top: 40px; animation-delay: 0.25s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 75px; top: 60px; animation-delay: 0.333333s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 60px; top: 75px; animation-delay: 0.416667s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 40px; top: 80px; animation-delay: 0.5s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 20px; top: 75px; animation-delay: 0.583333s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 5px; top: 60px; animation-delay: 0.666667s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 0px; top: 40px; animation-delay: 0.75s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 5px; top: 20px; animation-delay: 0.833333s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div><div style="left: 20px; top: 5px; animation-delay: 0.916667s; position: absolute; visibility: hidden; width: 19px; height: 19px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border-radius: 10px; animation-name: shcl1_bounce; animation-duration: 1s; animation-iteration-count: infinite; animation-direction: normal;"></div></div></div></div>
+
+
+
+</body></html>

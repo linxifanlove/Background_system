@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<title>上下分</title>
+	<link href="%E4%B8%8A%E4%B8%8B%E5%88%86_files/font-awesome.css" rel="stylesheet">
+	<link href="%E4%B8%8A%E4%B8%8B%E5%88%86_files/plugin.css" rel="stylesheet">
+	<link href="%E4%B8%8A%E4%B8%8B%E5%88%86_files/point-setting.css" rel="stylesheet">
+	<link href="%E4%B8%8A%E4%B8%8B%E5%88%86_files/layer.css" type="text/css" rel="styleSheet" id="layermcss">
+	<script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86_files/jquery.js"></script>
+	<script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86_files/jquery_002.js"></script>
+	<script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86_files/json2.js"></script>
+	<script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86_files/loading.js"></script>
+	<script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86_files/layer.js"></script>
+	<script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86_files/emoji.js"></script>
+	<script type="text/javascript" src="%E4%B8%8A%E4%B8%8B%E5%88%86_files/utils.js"></script>
+	<script type="text/javascript" src="common/socket.js"></script>
+	<style type="text/css">
+		.wxnick img{display: inline;height: 16px;position: relative;top: 3px;}
+	</style>
+<style id="shcl1" type="text/css">@-o-keyframes shcl1_bounce{0%{visibility:visible;-o-transform:scale(1)}80%{-o-transform:scale(.3)}100%{-o-transform:scale(1)}}@-ms-keyframes shcl1_bounce{0%{visibility:visible;-ms-transform:scale(1)}80%{-ms-transform:scale(.3)}100%{-ms-transform:scale(1)}}@-webkit-keyframes shcl1_bounce{0%{visibility:visible;-webkit-transform:scale(1)}80%{-webkit-transform:scale(.3)}100%{-webkit-transform:scale(1)}}@-moz-keyframes shcl1_bounce{0%{visibility:visible;-moz-transform:scale(1)}80%{-moz-transform:scale(.3)}100%{-moz-transform:scale(1)}}@keyframes shcl1_bounce{0%{visibility:visible;transform:scale(1)}80%{transform:scale(.3)}100%{transform:scale(1)}}</style></head>
+<body>
+	<div class="content point-setting">
+
+		<div class="part-0">
+			<form class="search">
+				<input placeholder="请输入玩家昵称" oninput="Search(this)" type="search">
+				<a style="cursor:pointer" class="search-btn"><i class="fa fa-search"></i></a>
+			</form>
+			<div class="title">
+				<div class="left left-a">
+					<input class="chk-btn" id="chkNotice" checked="checked" type="checkbox">上分成功群内通知
+				</div>
+				<div class="right">
+					当前玩家总积分：<span class="green" id="labTotalMoney">34749</span>
+				</div>
+			</div>
+			<div class="middle-btn">
+				<a href="http://niuniu.xingziliao.com/mch/MoneyAddLog.aspx"><i class="icon"></i>上下分统计</a>
+				<a style="cursor:pointer" class="btn-2" onclick="ClearAll();"><i class="fa fa-power-off"></i> 清除数据</a>
+			</div>
+			<div class="title">
+				<div class="left">成员列表</div>
+				<div class="middle">
+					<select id="drpUserType" onchange="FilterType()">
+						<option value="1" selected="selected">仅显示群内成员的</option>
+						<option value="2">显示全部成员</option>
+					</select>
+				</div>
+				<div class="right"><a style="cursor:pointer" class="save" onclick="AddMoneys();">确定更改</a></div>
+			</div>
+		</div>
+
+		<div class="part-1">
+			<div class="table-box">
+				<table class="tb">
+					<tbody id="divList"></tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="alert alert-edit">
+			<div class="wrapper">
+				<div class="main">
+					<div class="title wxnick">修改昵称</div>
+					<div class="box">
+						<div class="form-inp">
+							<input id="txtNickName" placeholder="请输入昵称" class="inp" type="text">
+						</div>
+						<div class="btnbox">
+							<a style="cursor:pointer" class="btn-01" onclick="EditName();">确定</a>
+							<a style="cursor:pointer" class="btn-02" onclick="$('.alert-edit').hide();">取消</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+
+		function PopupEditName(target,nUserId,nick) {
+			$('.alert-edit .main .title').html('修改[' + unescape(nick) + ']的昵称');
+			$('.alert-edit').attr("userid", nUserId);
+			$('.alert-edit')[0].Target = target;
+			$('.alert-edit').show();
+		}
+
+		function EditName() {
+
+			var nUserId = $('.alert-edit').attr("userid");
+			var nick = $.trim($("#txtNickName").val());
+			if (nick == "") {
+				gm.alert("请输入昵称");
+				return false;
+			}
+			post("/api/MchInterface.asmx/UserSetNick", { nUserId: nUserId, vcNickName: nick }, function (ret) {
+				if (ret.state == 1) {
+					$("#txtNickName").val('');
+					$($('.alert-edit')[0].Target).closest('tr').find('.name').html(nick);
+					$('.alert-edit').hide();
+				}
+				else {
+					gm.alert(ret.message);
+				}
+			});
+		}
+
+		function Search(target) {
+			var keyword = $.trim($(target).val());
+			$("#divList").children("tr").each(function (index, element) {
+				var name = $(element).find("p.name").html();
+				if (name.indexOf(keyword) != -1) {
+					$(element).show();
+				}
+				else {
+					$(element).hide();
+				}
+			});
+		}
+	initSocket(sOpen, sError, sMessage, sClose);
+	loading.show();
+	var info = {};
+	info.id = "RoomUserList"
+	var data = [];
+	data.push(info);
+	var jsonStr = getJsonStr(data)
+	socket.send(jsonStr);
+	console.log("jsonStr = %s", jsonStr)
+	function sMessage(msg){ 
+		console.log(msg.data)
+		var ret = JSON.parse(msg.data)
+		if (ret.id == "RoomUserList") {loading.hide();
+			dr = ret
+			$("#labTotalMoney").html(parseInt(dr.dmTotalMoney));
+			if (dr.nNotice == 1) {
+				$("#chkNotice")[0].checked = true;
+			}
+
+			var dt = dr.userList;
+			var s = '';
+			for (var i = 0; i < dt.length; i++) {
+
+				var dr = dt[i];
+
+				var nick = (dr.vcBetNickName != "" ? dr.vcBetNickName : ReplaceBase64Img(dr.vcBase64WeixinName));
+
+				s += '<tr memberid="' + dr.nMemberId + '" userid="' + dr.nUserId + '" isroomuser="' + dr.nIsRoomUser + '">';
+				s += '    <td>';
+				s += '        <div class="user mark">';
+				s += '            <div class="left">';
+				s += '                <div class="img-box" style="background-image: url(' + (dr.vcHeadImgUrl != "" ? dr.vcHeadImgUrl : '/images/icon/nohead.png') + ')"></div>';
+				s += '            </div>';
+				s += '            <div class="right">';
+				if (dr.nIsTuo == 1) {
+					s += '<p class="logo">托</p>';
+				}
+				s += '                <p class="name">' + (dr.vcBetNickName != "" ? dr.vcBetNickName : ReplaceBase64Img(dr.vcBase64WeixinName)) + '</p>';
+				s += '            </div>';
+				s += '            <p class="edit"><a style="cursor:pointer" onclick="PopupEditName(this,' + dr.nUserId + ',\'' + escape(nick) + '\');"><i class="fa fa-edit"></i></a></p>';
+				s += '        </div>';
+				s += '    </td>';
+				s += '    <td class="tdmoney">' + parseInt(dr.dmMoney) + '分</td>';
+				s += '    <td class="calendar"><a href="/mch/MoneyLog.aspx?nUserId='+dr.nUserId+'"></a></td>';
+				s += '    <td>';
+				s += '        <div class="inp-box">';
+				s += '            <div class="left">上分</div>';
+				s += '            <div class="right">';
+				s += '                <input name="addmoney" type="text" placeholder="0">';
+				s += '            </div>';
+				s += '        </div>';
+				s += '        <div class="inp-box inp-box-2">';
+				s += '            <div class="left">下分</div>';
+				s += '            <div class="right">';
+				s += '                <input name="submoney" type="text" placeholder="0">';
+				s += '            </div>';
+				s += '        </div>';
+				s += '    </td>';
+				s += '</tr>';
+
+			}
+
+			$("#divList").html(s);
+
+			// 如果选择群内的，把不是群内的隐藏
+			if ($("#drpUserType").val() == "1")
+				$("#divList tr[isroomuser='0']").hide();
+			else
+				$("#divList tr[isroomuser='0']").show();
+
+		}
+	}
+
+		function FilterType() {
+			if ($("#drpUserType").val() == "1")
+				$("#divList tr[isroomuser='0']").hide();
+			else
+				$("#divList tr[isroomuser='0']").show();
+		}
+
+		function AddMoneys() {
+
+			var flag = true;
+			var memberUserVal = [];
+			$("#divList").children("tr").each(function (index, element) {
+
+				if ($(element).is(':hidden')) return;
+
+				var nMemberId = $(element).attr("memberid");
+				var nUserId = $(element).attr("userid");
+				var addmoney = $.trim($(element).find('input[name="addmoney"]').val());
+				var submoney = $.trim($(element).find('input[name="submoney"]').val());
+
+				var money = 0;
+				if (addmoney != '') {
+					if (/^\d+$/.test(addmoney) == false) {
+						gm.alert("请输入正确的分数");
+						flag = false;
+						return false;
+					}
+					addmoney = parseInt(addmoney);
+					if (!(addmoney > 0)) {
+						gm.alert("请输入正确的分数");
+						flag = false;
+						return false;
+					}
+					money = money + addmoney;
+				}
+
+				if (submoney != '') {
+					if (/^\d+$/.test(submoney) == false) {
+						gm.alert("请输入正确的分数");
+						flag = false;
+						return false;
+					}
+					submoney = parseInt(submoney);
+					if (!(submoney > 0)) {
+						gm.alert("请输入正确的分数");
+						flag = false;
+						return false;
+					}
+					money = money - submoney;
+				}
+
+				if (money != 0) {
+					memberUserVal.push({ nMemberId: nMemberId, nUserId: nUserId, nValue: money });
+				}
+
+			});
+			if (!flag) {
+				return false;
+			}
+			if (memberUserVal.length == 0) {
+				gm.alert("请输入积分");
+				return false;
+			}
+			post("/api/MchInterface.asmx/MemberAddMoneys", { vcMemberUserVal: JSON.stringify(memberUserVal), nNotice: ($('#chkNotice')[0].checked == true ? 1 : 0) }, function (ds) {
+
+				if (ds.state == 0) {
+					gm.alert(ds.message);
+					return false;
+				}
+
+				var dr = ds[0][0];
+
+				if (dr.nState == 0) {
+					gm.alert(dr.vcMessage);
+					return false;
+				}
+
+				$('input[name="addmoney"]').val('');
+				$('input[name="submoney"]').val('');
+
+				var dt = ds[1];
+
+				for (var i = 0; i < dt.length; i++) {
+					var dr = dt[i];
+					$('tr[memberid="' + dr.nMemberId + '"]').find(".tdmoney").html(parseInt(dr.dmCurMoney) + '分');
+				}
+
+				//提示
+				layer.open({
+					content: '操作成功'
+				  , skin: 'msg'
+				  , time: 1
+				});
+
+			});
+		}
+
+		function ClearAll() {
+
+			gm.confirm("您确定要清除数据吗？", function () {
+				loading.show();
+				post("/api/MchInterface.asmx/RoomUserClearMoney", { rt: Math.random() }, function (ret) {
+					window.location.href = "/mch/RoomUser.aspx?rt=" + Math.random();
+				});
+			});
+
+		}
+
+	</script>
+
+</body></html>

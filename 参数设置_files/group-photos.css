@@ -1,0 +1,364 @@
+@charset "utf-8";
+
+/*选择*/
+.sel-photos{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 640px;
+    height: 100%;
+    background: rgba(0,0,0,.7);
+    z-index: 999;
+}
+.sel-photos .main{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    background: #fff;
+    border-radius: 5px;
+    overflow-y: scroll;
+}
+.sel-photos .main::-webkit-scrollbar{
+    display: none;
+}
+.sel-photos .main .title{
+    position: relative;
+    padding: 0 15px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+    background: #00a29a;
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+}
+.sel-photos .main .title a{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+}
+.sel-photos .main .box{
+    padding: 10px;
+    overflow-y: scroll;
+}
+.sel-photos .menu-box{
+    margin: 10px 5px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+}
+.sel-photos .menu-box .left{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.sel-photos .menu-box a{
+    display: inline;
+    padding: 0 10px;
+    margin: 0 5px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    background: #00a29a;
+    border-radius: 3px;
+    float: left;
+}
+.sel-photos .menu-box a.del{
+    background: #EF4F4F;
+}
+.sel-photos .photos-box{
+    position: relative;
+    background: #fff;
+    overflow: hidden;
+}
+.sel-photos .photos-box .title{
+    position: relative;
+    display: block;
+    padding: 10px;
+    line-height: 20px;
+    border-bottom: solid 1px #e5e5e5;
+}
+.sel-photos .photos-box .title .right{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -15px;
+    height: 30px;
+    line-height: 30px;
+    color: #999;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.sel-photos .photos-box .title .right input{
+    margin-left: 5px;
+    width: 20px;
+    height: 20px;
+}
+.sel-photos .img-list{
+    padding-top: 10px;
+    margin: 10px 0 0 10px;
+    overflow: hidden;
+}
+.sel-photos .img-list>li{
+    position: relative;
+    margin: 0 10px 10px 0;
+    padding: 0;
+    width: -webkit-calc(25% - 10px);
+    height: 57px;
+    background-position: 50%;
+    background-size: cover;
+    float: left;
+    cursor: pointer;
+    border-radius: 3px;
+}
+.sel-photos .img-list>li .fa-plus{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 35px;
+    color: #ccc;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border: solid 1px #e5e5e5;
+    box-sizing: border-box;
+    border-radius: 3px;
+}
+.sel-photos .img-list>li label{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    z-index: 1;
+}
+.sel-photos .img-list>li label input{
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 20px;
+    height: 20px;
+    -webkit-appearance: none;
+    border: none;
+    background: none;
+    background-size: auto 100%;;
+    border-radius: 50%;
+}
+.sel-photos .img-list>li label input:before{
+    content: "\f00c";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 18px;
+    height: 18px;
+    text-align: center;
+    line-height: 18px;
+    font-family: FontAwesome;
+    border: solid 1px #fff;
+    border-radius: 30px;
+    background: rgba(0,0,0,.3);
+    color: #fff;
+}
+.sel-photos .img-list>li label input:checked:before{
+    background: #00a29a;
+    border: solid 1px #00a29a;
+}
+.sel-photos .img-list>li a.link{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.sel-photos .img-list>li a.del{
+    display: block;
+    position: absolute;
+    top: -.08rem;
+    right: -.08rem;
+    color: #c1c1c1;
+    z-index: 2;
+    background: #fff;
+    width: .2rem;
+    height: .2rem;
+    text-align: center;
+    line-height: .2rem;
+    font-size: .2rem;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.sel-photos .swiper-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    z-index: 999999;
+}
+.sel-photos  .swiper-container label{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    padding: 13px 10px;
+    color: #ccc;
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    z-index: 9;
+}
+.sel-photos .swiper-container label input{
+    float: right;
+}
+.sel-photos .swiper-container .text{
+    position: absolute;
+    left: 0;
+    bottom: 45px;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0,0,0,.5);
+    color: #ccc;
+    box-sizing: border-box;
+    line-height: 20px;
+    z-index: 9;
+}
+.sel-photos .swiper-container .text img{
+    display: inline;
+    height: 16px;
+    position: relative;
+    top: 3px;
+}
+.sel-photos .swiper-container .btnbox-2{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    background: #292d30;
+    color: #fff;
+    z-index: 9;
+}
+.sel-photos .swiper-container .btnbox-2 .right{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.sel-photos .swiper-container .btnbox-2 a{
+    padding: 0 10px;
+    display: inline-block;
+    color: #fff;
+}
+.sel-photos .swiper-container .btnbox-2 a .fa{
+    margin-right: 5px;
+}
+.sel-photos .swiper-container .cmt-box{
+
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    z-index: 10;
+    box-sizing: border-box;
+}
+.sel-photos .swiper-container .cmt-box .inp{
+    margin: 10px;
+    padding: 10px;
+    border: solid 1px #e5e5e5;
+    background: #fff;
+}
+.sel-photos .swiper-container .cmt-box textarea{
+    width: 100%;
+    height: 80px;
+    border-radius: 3px;
+    line-height: 20px;
+    border: none;
+    box-sizing: border-box;
+    resize: none;
+}
+.sel-photos .swiper-container .cmt-box .submit{
+    margin: 15px 10px;
+}
+.sel-photos .swiper-container .cmt-box .submit a{
+    display: block;
+    border-radius: 3px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 16px;
+    background: #00a29a;
+    color: #fff;
+}
+.sel-photos .swiper-container .btnbox{
+    position: fixed;
+    bottom: 10px;
+    padding: 0 10px;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 9;
+}
+.sel-photos .swiper-container .btn{
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    color: #fff;
+    background: #00a29a;
+    border-radius: 3px;
+}
+.sel-photos .swiper-slide {
+    text-align: center;
+
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.sel-photos .swiper-container img{
+    max-width: 100%;
+}
+.sel-photos .note{
+    padding: 5px 10px 0 5px;
+    font-size: 14px;
+    color: red;
+}

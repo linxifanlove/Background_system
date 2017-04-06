@@ -1,0 +1,826 @@
+@charset "utf-8";
+
+html{
+    font-size: calc(100vw/3.75);
+}
+@media (min-width: 414px){
+    html{
+        font-size: 110.4px;
+    }
+}
+
+/*设置PC版账号密码
+******************************/
+a:active{
+    opacity: .7;
+}
+.account-setting{
+    color: #727171;
+    font-size: .14rem;
+    background-image: -webkit-linear-gradient(90deg,#2cb7b3,#fff,#fff,#fff);
+}
+.account-setting .part-0{
+    margin: .2rem 0 .3rem 0;
+    text-align: center;
+    font-size: .16rem;
+    color: #00a29a;
+}
+.account-setting .part-0 .select-box{
+    position: relative;
+    top: -1px;
+    margin: 0 .03rem;
+    padding: 0 .2rem 0 .1rem;
+    display: inline-block;
+    height: .25rem;
+    line-height: .25rem;
+    border-radius: .05rem;
+    vertical-align: middle;
+    border: solid 1px #cacaca;
+    box-sizing: border-box;
+    font-size: .14rem;
+    color: #666;
+}
+.account-setting .part-0 .select-box:after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: .2rem;
+    height: .2rem;
+    line-height: .2rem;
+    text-align: center;
+    margin-top: -.1rem;
+    color: #999;
+    font-size: .14rem;
+    font-family: FontAwesome;
+}
+.account-setting .part-1 {
+    position: relative;
+    margin: .15rem .2rem .1rem .2rem;
+}
+.account-setting .part-1 .gray{
+    color: #999;
+}
+.account-setting .part-1 small{
+    font-size: .12rem;
+}
+.account-setting .part-1 .center{
+    margin: auto;
+    padding-bottom: .1rem;
+    width: 2rem;
+    text-align: center;
+}
+.account-setting .part-1 .center .tag{
+    text-align: center;
+}
+.account-setting .part-1 .center .tag span{
+    display: inline-block;
+    font-size: .12rem;
+    border: solid 1px #ccc;
+    padding: .01rem .05rem;
+    border-radius: 7px;
+}
+.account-setting .part-1 .center .head,
+.account-setting .part-1 .right .head{
+    position: relative;
+    margin: auto;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: solid 1px #00a29a;
+    box-sizing: border-box;
+}
+.account-setting .part-1 .right .head{
+    width: .7rem;
+    height: .7rem;
+}
+.account-setting .part-1 .center .head:before,
+.account-setting .part-1 .right .head:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: solid .05rem #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+.account-setting .part-1 .right .head:before{
+    border: solid .03rem #fff;
+}
+.account-setting .part-1 .center .name,
+.account-setting .part-1 .right .name{
+    position: relative;
+    margin: .05rem 0 .02rem 0;
+    font-size: .16rem;
+    color: #00a29a;
+}
+.account-setting .part-1 .right .name{
+    font-size: .14rem;
+    margin: .02rem 0;
+    text-align: center;
+}
+.account-setting .part-1 .center .name img,
+.account-setting .part-1 .right .name img{
+    display: inline;
+    height: .16rem;
+    position: relative;
+    top: .02rem;
+}
+.account-setting .part-1 .right .edit{
+    text-align: center;
+    text-decoration: underline;
+}
+.account-setting .part-1 .right .edit a{
+    font-size: .12rem;
+    color: #999;
+}
+.account-setting .part-1 .right .edit a i{
+    display: inline-block;
+    margin: -.02rem .02rem -.02rem 0;
+    width: .15rem;
+    height: .15rem;
+    background: url("../images/icon/icon-01.png") no-repeat;
+    background-size: auto 200%;
+}
+.account-setting .part-1 .left,
+.account-setting .part-1 .right{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1rem;
+    height: 100%;
+}
+.account-setting .part-1 .right{
+    left: auto;
+    right: 0;
+    text-align: right;
+}
+.account-setting .part-1 .right .wrap{
+    position: absolute;
+    top: .335rem;
+    right: -.06rem;
+}
+.account-setting .part-1 .left .box-1{
+    color: #00a29a;
+}
+.account-setting .part-1 .left .box-1 .fa{
+    width: .2rem;
+    text-align: left;
+}
+.account-setting .part-1 .left .box-1 p{
+    margin-bottom: .05rem;
+}
+.account-setting .part-1 .left .box-1 p .rqcode-btn{
+    margin-top: -.03rem;
+    margin-left: .05rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+.account-setting .part-1 .left .box-1 p .rqcode-btn img{
+    width: .15rem;
+}
+.account-setting .part-1 .left .box-2{
+    margin-top: .1rem;
+    height: .6rem;
+}
+.account-setting .part-1 .left .box-2 a.abnormal{
+    bottom: .5rem;
+}
+.account-setting .part-1 .left .box-2 a{
+    display: block;
+    width: .85rem;
+    height: .25rem;
+    line-height: .25rem;
+    text-align: center;
+    background: #00a29a;
+    color: #fff;
+    border-radius: .05rem;
+    margin-bottom: .05rem;
+}
+.account-setting .part-1 .right .refresh{
+    /* margin-top: .15rem; */
+}
+.account-setting .part-1 .right .refresh a{
+    color: #00a29a;
+}
+.account-setting .part-1 .right .setting-btn{
+    position: absolute;
+    /* bottom: 1rem; */
+    right: 0;
+    display: block;
+    width: .85rem;
+    height: .25rem;
+    line-height: .25rem;
+    text-align: center;
+    background: #00a29a;
+    color: #fff;
+    border-radius: .05rem;
+}
+.account-setting .part-2{
+    padding: 0 .1rem .15rem;
+}
+.account-setting .part-2 .point{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.account-setting .part-2 .point .box-1,
+.account-setting .part-1 .right .box-1{
+    margin-bottom: .1rem;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: right;
+}
+.account-setting .part-1 .right .box-1{
+    margin-top: .05rem;
+}
+.account-setting .part-2 .point .box-1 .p1,
+.account-setting .part-1 .right .box-1 .p1{
+    font-size: .15rem;
+    margin-bottom: .05rem;
+}
+.account-setting .part-2 .point .box-1 .p2,
+.account-setting .part-1 .right .box-1 .p2{
+    display: inline-block;
+    min-width: .85rem;
+    padding: .02rem .1rem;
+    color: #00a29a;
+    text-align: center;
+    border-radius: .1rem;
+    border: dashed 1px #00a29a;
+    box-sizing: border-box;
+}
+.account-setting .part-2 .title{
+    text-align: center;
+    color: #00a29a;
+}
+.account-setting .part-2 .select-box{
+    text-align: center;
+}
+.account-setting .part-2 .select-box .select{
+    margin-top: .1rem;
+    position: relative;
+    display: inline-block;
+    height: .3rem;
+    line-height: .3rem;
+    padding: 0 .1rem;
+    text-align: center;
+    background: #00a29a;
+    color: #fff;
+    border-radius: .05rem;
+}
+.account-setting .part-2 .select-box .select img{
+    display: inline;
+    height: .16rem;
+    position: relative;
+    top: .03rem;
+}
+.account-setting .part-2 .select-box .select:after{
+    content: "\f0d7";
+    margin-left: .05rem;
+    font-family: FontAwesome;
+}
+.account-setting .part-2 .circle-box{
+    margin: auto;
+    width: 2.5rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.account-setting .part-2 .circle-box>li{
+    height: 1.6rem;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.account-setting .part-2 .circle-box>li .circle{
+    position: relative;
+    margin: auto;
+    width: .5rem;
+    height: .5rem;
+    line-height: 1;
+    text-align: center;
+    background: #00a29a;
+    color: #fff;
+    border-radius: 50%;
+    font-size: .11rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.account-setting .part-2 .circle-box>li:nth-child(1) .circle,
+.account-setting .part-2 .circle-box>li:nth-child(3) .circle{
+    top: .25rem;
+}
+.account-setting .part-2 .circle-box>li:nth-child(2) .circle{
+    top: .6rem;
+}
+.account-setting .part-2 .circle-box-2{
+    width: auto;
+    margin: 0 .05rem;
+}
+.account-setting .part-2 .circle-box-2>li .circle{
+    width: .5rem;
+    height: .5rem;
+    font-size: .11rem;
+}
+.account-setting .part-2 .circle-box-2>li:nth-child(1) .circle,
+.account-setting .part-2 .circle-box-2>li:nth-child(5) .circle{
+    top: .25rem;
+}
+.account-setting .part-2 .circle-box-2>li:nth-child(2) .circle,
+.account-setting .part-2 .circle-box-2>li:nth-child(4) .circle{
+    top: .7rem;
+}
+.account-setting .part-2 .circle-box-2>li:nth-child(3) .circle{
+    top: .95rem;
+    width: .65rem;
+    height: .65rem;
+    font-size: .14rem;
+    font-weight: bold;
+}
+
+.account-setting .part-3{
+    text-align: center;
+}
+.account-setting .part-3 .p0 a{
+    color: #00403d;
+}
+.account-setting .part-3 .p0 a .fa{
+    margin-left: .03rem;
+    color: #00a29a;
+}
+.account-setting .part-3 .p1{
+    margin-top: .4rem;
+}
+.account-setting .part-3 .p1 a{
+    color: #00403d;
+    font-size: .16rem;
+    text-decoration: underline;
+}
+.account-setting .part-3 .p2{
+    margin-top: .1rem;
+    color: #007c76;
+}
+.account-setting .popup-room label{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.account-setting .popup-room label .name{
+    margin-left: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.account-setting .popup-room .room-list>li{
+    position: relative;
+    padding: 13px 0;
+    border-bottom: solid 1px #e5e5e5;
+}
+.account-setting .popup-room .room-list>li .del{
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    height: 20px;
+    line-height: 20px;
+    color: red;
+    font-size: 16px;
+}
+.account-setting .popup-room label .name img{
+    display: inline;
+    height: 16px;
+    position: relative;
+    top: 3px;
+}
+.account-setting .form-inp{
+    margin-top: 10px;
+}
+.account-setting .form-inp .inp{
+    padding: 0 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    border: solid 1px #e5e5e5;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+.account-setting .edit-msg{
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    max-width: 640px;
+    height: 100%;
+    background: rgba(0,0,0,.7);
+}
+.account-setting .edit-msg .main{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -2rem 0 0 -1.5rem;
+    width: 3rem;
+    height: 4rem;
+    border-radius: .1rem;
+    border: solid 1px #00a29a;
+    background-image: -webkit-linear-gradient(90deg,#2cb7b3,#fff,#fff,#fff);
+    overflow: hidden;
+}
+.account-setting .edit-msg .main .box-1{
+    padding: .15rem;
+}
+.account-setting .edit-msg .main .head{
+    position: relative;
+    margin: auto;
+    width: .7rem;
+    height: .7rem;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    border: solid 1px #00a29a;
+    box-sizing: border-box;
+}
+.account-setting .edit-msg .main .head:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: solid .05rem #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+.account-setting .edit-msg .main .close{
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: .4rem;
+    height: .4rem;
+    line-height: .4rem;
+    text-align: center;
+    color: #00a29a;
+    font-size: .24rem;
+}
+.account-setting .edit-msg .main .upload{
+    position: absolute;
+    top: .6rem;
+    right: .85rem;
+    width: .2rem;
+    height: .2rem;
+    background: url("../images/icon/icon-camera.png") center no-repeat;
+    background-size: 100% auto;
+}
+.account-setting .edit-msg .main .upload input{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+.account-setting .edit-msg .main .name-box{
+    margin-top: .1rem;
+    text-align: center;
+}
+.account-setting .edit-msg .main .name-box .c1{
+    color: #00a29a;
+}
+.account-setting .edit-msg .main .name-box .inp-box{
+    position: relative;
+    padding: .05rem;
+    width: 1.2rem;
+    display: inline-block;
+}
+.account-setting .edit-msg .main .name-box .inp-box input{
+    width: 100%;
+    padding: .05rem .3rem .05rem 0;
+    border: none;
+    box-sizing: border-box;
+    font-size: .14rem;
+    color: #666;
+}
+.account-setting .edit-msg .main .name-box .inp-box:after{
+    position: absolute;
+    top: 50%;
+    right: .15rem;
+    content: "";
+    margin-top: -.08rem;
+    width: .16rem;
+    height: .16rem;
+    line-height: .16rem;
+    background: url("../images/icon/icon-edit.png") center no-repeat;
+    background-size: auto 100%;
+    pointer-events: none;
+}
+.account-setting .edit-msg .main .name-box .inp-box input:focus{
+    border-bottom: solid 1px #00a29a;
+    box-sizing: border-box;
+}
+.account-setting .edit-msg .main .name-box img{
+    display: inline;
+    height: .15rem;
+    position: relative;
+    top: .03rem;
+}
+.account-setting .edit-msg .main .box-2{
+    margin-bottom: .15rem;
+}
+.account-setting .edit-msg .main .box-2 .title{
+    font-size: .15rem;
+    color: #2ea7e0;
+    text-align: center;
+}
+.account-setting .edit-msg .main .box-2 .rqcode{
+    margin: .1rem auto;
+    width: 1.5rem;
+    height: 1.5rem;
+}
+.account-setting .edit-msg .main .box-2 .rqcode img{
+    width: 100%;
+    border: solid 1px #e5e5e5;
+}
+.account-setting .edit-msg .main .submit a{
+    margin: auto;
+    display: block;
+    width: .85rem;
+    height: .3rem;
+    line-height: .3rem;
+    border-radius: .05rem;
+    background: #00a29a;
+    color: #fff;
+    font-size: .16rem;
+    text-align: center;
+}
+
+/*设置拖
+******************************/
+.setting-tuo {
+    color: #727171;
+    font-size: .14rem;
+    background-image: -webkit-linear-gradient(90deg,#2cb7b3,#fff,#fff,#fff);
+}
+.setting-tuo .title{
+    position: relative;
+    padding: .3rem 0 .1rem 0;
+    text-align: center;
+    font-size: .16rem;
+    color: #00a29a;
+}
+.setting-tuo .submit{
+    text-align: center;
+}
+.setting-tuo .submit a{
+    display: inline-block;
+    margin-bottom: .1rem;
+    padding: 0 .1rem;
+    height: .3rem;
+    line-height: .3rem;
+    text-align: center;
+    background: #00a29a;
+    color: #fff;
+    border-radius: .05rem;
+}
+.setting-tuo .submit a:active{
+    opacity: .7;
+}
+.setting-tuo .form-list{
+    margin: .15rem;
+    background: rgba(255,255,255,.8);
+    border-radius: .05rem;
+    border: solid 1px #00a29a;
+    overflow: hidden;
+}
+.setting-tuo .form-list .search{
+    position: relative;
+    padding: .1rem;
+    background: #efeff4;
+    overflow: hidden;
+    border-bottom: solid 1px #e5e5e5;
+}
+.setting-tuo .form-list .search:after{
+    content: "\f002";
+    position: absolute;
+    top: 50%;
+    left: .2rem;
+    margin-top: -.15rem;
+    height: .3rem;
+    line-height: .3rem;
+    color: #ccc;
+    font-family: FontAwesome;
+}
+.setting-tuo .form-list .search input{
+    width: 100%;
+    padding: 0 .6rem 0 .3rem;
+    height: .3rem;
+    line-height: .3rem;
+    background: #fff;
+    border: none;
+    border-radius: .03rem;
+    box-sizing: border-box;
+    font-size: .14rem;
+}
+.setting-tuo .form-list .search a{
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -.15rem;
+    right: .1rem;
+    width: .5rem;
+    height: .3rem;
+    line-height: .3rem;
+    text-align: center;
+    border-left: solid 1px #e5e5e5;
+}
+.setting-tuo .form-list .item{
+    padding: .1rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-align-items: center;
+    align-items: center;
+    border-bottom: dashed 1px #ccc;
+}
+.setting-tuo .form-list .item:first-child{
+    border-top: none;
+}
+.setting-tuo .form-list .item:last-child{
+    border-bottom: none;
+}
+.setting-tuo .form-list .item .left{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: hidden;
+}
+.setting-tuo .form-list .item .right{margin-left: .1rem;}
+.setting-tuo .form-list .item .right a{
+    padding: 0 .02rem;
+    font-size: .16rem;
+    color: red;
+}.setting-tuo .form-list .item .right .icon{
+     display: inline-block;
+     width: .155rem;
+     height: .145rem;
+     background: url("../images/icon/icon-20170103.png") 0 0 no-repeat;
+     background-size: auto 100%;
+ }
+.setting-tuo .form-list .item .right .icon-0{background-position-x: 75%;}
+.setting-tuo .form-list .item .right .icon-1{background-position-x: 27%;}
+.setting-tuo .form-list .item .right .icon-2{background-position-x: 0;}
+.setting-tuo .form-list .item .right .icon-3{background-position-x: 53%;}
+.setting-tuo .form-list .item .img-box{
+    margin-right: .05rem;
+    width: .3rem;
+    min-width: .3rem;
+    height: .3rem;
+    background-size: cover;
+    background-position: 50%;
+    border-radius: 50%;
+}
+.setting-tuo .form-list .item .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+.setting-tuo .form-list .item .name img {
+    display: inline;
+    height: 16px;
+    position: relative;
+    top: 3px;
+}
+.setting-tuo .form-list .item .tag{
+    margin-left: .03rem;
+    display: inline-block;
+    padding: .02rem .05rem;
+    border-radius: 3px;
+    font-size: .1rem;
+    border: solid 1px #ccc;
+    white-space: nowrap;
+}
+.setting-tuo .popup-box .title {
+    text-align: center;
+    color: #fff;
+    background: #00a29a;
+    border-radius: 5px 5px 0 0;
+    font-size: 16px;
+}
+.activation .rqcode-box{
+    padding: 10px 0;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.05);
+}
+.activation .rqcode-box .rqcode{
+    margin: 10px auto;
+    width: 166px;
+    height: 166px;
+    overflow: hidden;
+}
+.activation .rqcode-box .rqcode img{
+    width: 100%;
+}
+.activation .rqcode-box .p1{
+    padding: 0 10px;
+    text-align: center;
+    color: #999;
+}
+.activation .rqcode-box .p1 a{
+    display: block;
+    color: #10AEFF;
+}
+.activation .rqcode-box .p2{
+    margin: 10px auto;
+    width: 80%;
+    line-height: 20px;
+}
+.activation .rqcode-box .p2-1{
+    text-align: center;
+}
+.activation .btn-box{
+    margin: 15px 10px 10px 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.activation .btn-box>li{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.activation .btn-box>li a{
+    margin: auto;
+    display: block;
+    width: 110px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 3px;
+    background: #10aeff;
+    color: #fff;
+    font-size: 16px;
+}
+
+
+/************PC机器人*************/
+
+.robot .bg{
+    width:100%;
+    height:3.2rem;
+    background:url(../images/bg/pic-07.png)center no-repeat;
+    background-size:100% auto;
+    position: relative;
+}
+.robot .btn{
+    position: absolute;
+    bottom:.2rem;
+    text-align: center;
+    width:100%;
+    height: .3rem;
+    line-height: .3rem;
+    text-align: center;
+}
+.robot .btn a{
+    padding:.05rem .12rem;
+    background:#00a29a;
+    color:#fff;
+    border-radius:.03rem;
+}

@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<title>商家中心</title>
+	<link href="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/font-awesome.css" rel="stylesheet">
+	<link href="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/plugin.css" rel="stylesheet">
+	<link href="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/user-center.css" rel="stylesheet">
+	<link href="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/activation.css" rel="stylesheet">
+
+	<script type="text/javascript" src="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/jquery.js"></script>
+	<script type="text/javascript" src="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/jquery_002.js"></script>
+	<script type="text/javascript" src="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/json2.js"></script>
+	<script type="text/javascript" src="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/loading.js"></script>
+	<script type="text/javascript" src="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/layer.js"></script><link href="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/layer.css" type="text/css" rel="styleSheet" id="layermcss">
+	<script type="text/javascript" src="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/emoji.js"></script>
+	<script type="text/javascript" src="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/utils.js"></script>
+	<script type="text/javascript" src="common/socket.js"></script>
+<style id="shcl1" type="text/css">@-o-keyframes shcl1_bounce{0%{visibility:visible;-o-transform:scale(1)}80%{-o-transform:scale(.3)}100%{-o-transform:scale(1)}}@-ms-keyframes shcl1_bounce{0%{visibility:visible;-ms-transform:scale(1)}80%{-ms-transform:scale(.3)}100%{-ms-transform:scale(1)}}@-webkit-keyframes shcl1_bounce{0%{visibility:visible;-webkit-transform:scale(1)}80%{-webkit-transform:scale(.3)}100%{-webkit-transform:scale(1)}}@-moz-keyframes shcl1_bounce{0%{visibility:visible;-moz-transform:scale(1)}80%{-moz-transform:scale(.3)}100%{-moz-transform:scale(1)}}@keyframes shcl1_bounce{0%{visibility:visible;transform:scale(1)}80%{transform:scale(.3)}100%{transform:scale(1)}}</style></head>
+<body>
+<div class="content user-center">
+	<header>
+		<a href="javascript:history.go(-1)" class="left"><i class="fa fa-chevron-left"></i></a>
+		<div class="top-tit">商家中心</div>
+		<a style="cursor:pointer" class="right"><i class="fa fa-home"></i></a>
+	</header>
+	<div class="part-1">
+		<div class="left">
+			<div class="row">云 点：<span id="labYunPoint"></span></div>
+			<div class="row"><a style="cursor:pointer" class="btn js-chongzhi" id="btnRecharge">充 值</a></div>
+			<div class="row">总积分：<span id="labPlayersMoney"></span></div>
+		</div>
+		<div class="center">
+			<div class="logo"><img src="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/logo_03.png"></div>
+			<div class="user" id="divUserInfo" style="">
+				<div class="img-box" id="divHeadImgUrl""></div>
+				<div class="name" id="labNickName"></div>
+				<div class="change"><a style="cursor:pointer" class="js-change" onclick="MchChange();">更换商家号</a></div>
+			</div>
+		</div>
+		<div class="right">
+			<div class="row">总余额：<span id="labMchMoney"></span></div>
+			<div class="row"><a style="cursor:pointer" class="btn" onclick="gm.alert('暂未开发，敬请期待！');">提 现</a></div>
+			<div class="row">
+				<a style="cursor:pointer" class="btn" id="btnAccount">账号管理</a>
+			</div>
+		</div>
+	</div>
+	<div class="part-2">
+		<div class="top-box">
+			<div class="new"><a href="http://niuniu.xingziliao.com/mch/UpdateLog.aspx">更新日志 <i id="labVerCount" class="num" style="display:none">0</i></a></div>
+			<div class="center">
+				<div class="select-box js-group" id="divRoomName">请扫码登录</div>
+			</div>
+			<div class="right">
+				<div class="row" id="getWxqr" style="color: #00a29a;">获取二维码</div>
+			</div>
+		</div>
+		<div class="list-box">
+			<div class="title">功能列表</div>
+			<ul class="list">
+				<li id="li01" class="active">
+					<div class="wrap" onclick="GameChange(this,1)">
+						<div class="icon"><img src="%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83_files/icon-room-02.png"></div>
+						<div class="name">牛牛算分</div>
+					</div>
+					<a style="cursor:pointer" class="btn" id="btn01" onclick="EnterGame(this,1);">立即进入</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div><center><img id="imgWxqr"></center></div>
+
+	<div class="alert alert-user" id="divSelectRoom" style="display: none;">
+		<div class="main">
+			<div class="title">请选择需要使用的群</div>
+			<div class="box">
+				<ul class="list" id="divRoomList"></ul>
+			</div>
+			<div class="btnbox">
+				<a href="javascript:void(0)" class="btn-01" onclick="ChangeRoom();">确定</a>
+				<a href="javascript:void(0)" class="btn-02" onclick="$('#divSelectRoom').hide()">取消</a>
+			</div>
+		</div>
+	</div>
+
+	<!--请输入续费授权码-->
+	<div class="alert alert-xufei">
+		<div class="wrapper">
+			<div class="main">
+				<div class="title">请输入续费授权码</div>
+				<div class="box"><input placeholder="请输入续费授权码" class="wxid-inp" id="txtSN" type="text"></div>
+				<div class="btnbox">
+					<a style="cursor:pointer" class="btn-01" onclick="Renewal()">确定</a>
+					<a style="cursor:pointer" class="btn-02" onclick="$('.alert-xufei').hide()">取消</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--续费成功-->
+	<div class="alert alert-xufei-success" style="display: none;">
+		<div class="wrapper">
+			<div class="main">
+				<div class="title">您已续费成功</div>
+				<div class="wrap" id="divRenewResult">
+				</div>
+				<a style="cursor:pointer" class="btn-01" onclick="$('.alert-xufei-success').hide()">关闭</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- 机器人二维码 -->
+	<div id="divRobotQrCode" class="alert alert-activation" style="display:none;">
+		<div class="wrapper">
+			<div class="main">
+			</div>
+		</div>
+	</div>
+
+	<div id="divAccount" class="alert alert-account" style="display: none;">
+		<div class="wrapper">
+			<div class="main">
+				<div class="title">设置PC版账号密码</div>
+				<div class="box">
+					<div class="form-inp">
+						<input id="txtMsgRobotUserName" placeholder="请输入账号" class="inp" value="G14190701857" type="text">
+						<input id="txtMsgRobotPassword1" placeholder="请输入密码" class="inp" type="password">
+						<input id="txtMsgRobotPassword2" placeholder="确认密码" class="inp" type="password">
+					</div>
+					<div class="btnbox">
+						<a style="cursor: pointer" class="btn-01" onclick="MsgRobotAccountUpdate();">确定</a>
+						<a style="cursor: pointer" class="btn-02" onclick="$('#divAccount').hide();">取消</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 更换商家号 -->
+	<div id="divMchChange" class="popup-box popup-cus-2 popup-change" style="display: none;">
+		<div class="wrapper">
+			<div class="main">
+				<div class="title">更换商家号</div>
+				<div class="activation">
+					<div class="rqcode-box" id="divServiceRobot">
+					</div>
+					<p class="underline"><a style="cursor:pointer" class="underline js-link" onclick="$('#divMchChange').hide();$('#divApplyAddFriend').show()">已申请添加接待号，但长时间不通过？</a></p>
+				</div>
+				<div class="btn">
+					<a href="javascript:void(0)" class="btn-1" onclick="$('#divMchChange').hide();">确定</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="divApplyAddFriend" class="alert alert-adduser" style="display:none;">
+		<div class="main">
+			<div class="title">温馨提示</div>
+			<div class="text">
+				<div>
+					<p>请输入你的微信号，接待号稍后会主动添加你为好友</p>
+					<input id="txtRobotWxId" type="hidden">
+					<input id="txtAlias" class="wxid-inp" placeholder="请输入微信号" type="text">
+				</div>
+			</div>
+			<div class="btnbox">
+				<a style="cursor:pointer" class="btn-01" onclick="ApplyAddFriend2()">确定</a>
+				<a style="cursor:pointer" class="btn-02" onclick="$('#divApplyAddFriend').hide()">取消</a>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	initSocket(sOpen, sError, sMessage, sClose);
+	function sMessage(msg){ 
+		console.log(msg.data)
+		var ret = JSON.parse(msg.data)
+		if (ret.id == "GameRoomGameList") {
+			$("#labYunPoint").html(ret.nYunPoint + '点');
+			$("#labPlayersMoney").html(parseInt(ret.dmPlayersMoney) + "分");
+			$("#labMchMoney").html(ret.dmMchMoney + "元");
+
+			$("#divHeadImgUrl").css("background-image", "url(" + ret.vcHeadImgUrl + ")");
+			var nick = ret.vcBetNickName == '' ? ReplaceBase64Img(ret.vcBase64WeixinName) : ret.vcBetNickName;
+			$("#labNickName").html(nick);
+			$("#divUserInfo").show();
+			$("#btnRecharge").click(function () {
+				$(".alert-xufei").show();
+			});
+			$("#txtMsgRobotUserName").val(ret.vcUserName);
+			$("#txtMsgRobotPassword1").val(ret.vcPassWord);
+			$("#txtMsgRobotPassword2").val(ret.vcPassWord);
+
+			if (parseInt(ret.nVerCount) > 0) {
+				$("#labVerCount").html(ret.nVerCount);
+				$("#labVerCount").show();
+			}
+
+			var vcChatRoomId = ret.vcChatRoomId;
+			$("#li01").addClass("active");
+
+			var vcChatRoomName = '';
+
+			/** 群列表 **/
+			var dt = ret.gameGroup;
+			var groupCount = dt.length;
+			var s = '';
+			for (var i = 0; i < dt.length; i++) {
+				var dr = dt[i];
+
+				s += '<li>';
+				s += '    <label>';
+				s += '        <input type="radio" name="room_name" class="p-chkbox-2" base64name="' + dr.vcBase64WeixinName + '" chatroomid="' + dr.vcChatRoomId + '" ' + (dr.vcChatRoomId == vcChatRoomId ? 'checked="checked"' : '') + '/>';
+				s += '        <p class="name">' + ReplaceBase64Img(dr.vcBase64WeixinName) + '</p>';
+				s += '    </label>';
+				s += '    <a style="cursor:pointer" class="del" onclick="DeleteRoom(this,\'' + dr.vcChatRoomId + '\')"><i class="fa fa-trash-o"></i></a>';
+				s += '</li>';
+
+				if (dr.vcChatRoomId == vcChatRoomId) {
+					vcChatRoomName = ReplaceBase64Img(dr.vcBase64WeixinName);
+				}
+			}
+			$("#divRoomList").html(s);
+			if (groupCount > 0)
+				$("#divRoomName").html(vcChatRoomName);
+			$("#divRoomName").click(function () {
+				if (groupCount > 0) {
+					$("#divSelectRoom").show();
+				}
+				else {
+					gm.alert("您目前没有已开通的微信群，赶快去开通一个功能吧。");
+				}
+			});
+		}else if (ret.id == "wxqr") {
+			$("#imgWxqr").attr("src", ret.url);
+		}else if (ret.id == "changeRoom") {
+			if (ret.state == 1) {
+				$("#divRoomName").html(ReplaceBase64Img(ret.vcBase64WeixinName));
+				$('#divSelectRoom').hide();
+			}
+			else {
+				gm.alert(ret.message);
+			}
+		}
+	}
+
+
+	function EnterGame(target, nGameId) {
+		if ($(target).html().indexOf("开通") != -1) {
+			ApplyRobot(target, nGameId);
+		}
+		else {
+			location.href = "%E7%89%9B%E7%89%9B%E7%AE%97%E5%88%86.htm";
+		}
+	}
+
+	function isnull(value, defaultValue) {
+		if (typeof (value) == "undefined") return defaultValue;
+		if (isNaN(value)) return defaultValue;
+		if (value == null) return defaultValue;
+		return value;
+	}
+
+
+	function DeleteRoom(target, vcChatRoomId) {
+
+		gm.confirm("您确定要删除吗？", function () {
+
+			post("/api/MchInterface.asmx/DeleteRoom", { vcChatRoomId: vcChatRoomId }, function (ret) {
+
+				if (ret.state == 1) {
+					gm.alert("提交成功，系统将在一分钟后自动处理。");
+				}
+				else {
+					gm.alert(ret.message);
+				}
+
+			});
+		});
+
+	}
+
+	// 切换群
+	function ChangeRoom() {
+
+		var vcChatRoomId = $("#divRoomList input:checked").attr("chatroomid");
+		var roomname = $("#divRoomList input:checked").attr("base64name");
+		var info = {};
+		info.id = "changeRoom"
+		info.roomname = roomname;
+		var data = [];
+		data.push(info);
+		var jsonStr = getJsonStr(data)
+		socket.send(jsonStr);
+	}
+
+	function MsgRobotAccountUpdate() {
+
+		var username = $.trim($("#txtMsgRobotUserName").val());
+		if (username == "") {
+			gm.alert("请输入帐号");
+			return false;
+		}
+		if (/^[0-9a-zA-Z_]{4,18}$/.test(username) == false) {
+			gm.alert("帐号必须是6-18位字符，只能包含英文字母、数字、下划线！");
+			return false;
+		}
+
+		var password = $.trim($("#txtMsgRobotPassword1").val());
+		if (password == "") {
+			gm.alert("请输入密码");
+			return false;
+		}
+		if (/^[0-9a-zA-Z_]{6,16}$/.test(password) == false) {
+			gm.alert("密码必须是6-16位字符，可包含数字字母(区分大小写)。");
+			return false;
+		}
+
+		var password2 = $.trim($("#txtMsgRobotPassword2").val());
+		if (password != password2) {
+			gm.alert("两次输入的密码不一致！");
+			return false;
+		}
+
+		post("/api/MchInterface.asmx/GameRoomMsgAccountSet", { vcMsgRobotUserName: username, vcMsgRobotPassWord: password }, function (ret) {
+
+			if (ret.state == 1) {
+				$(".alert-account").hide();
+				gm.alert("设置成功");
+			}
+			else {
+				gm.alert(ret.message);
+			}
+
+		});
+	}
+
+	// 续费
+	function Renewal() {
+
+		var vcSerialNumber = $.trim($("#txtSN").val());
+		if (vcSerialNumber == "") {
+			gm.alert("请输入授权码");
+			return false;
+		}
+		post("/api/mchinterface.asmx/GameRoomRenewal", { vcSerialNumber: vcSerialNumber }, function (ret) {
+
+			if (ret.state == 1) {
+
+				$("#txtSN").val('');
+
+				var s = '';
+				s += '    <div class="flex-box">';
+				s += '        <div class="left">你已成功续费</div>';
+				s += '        <div class="right"><span class="c1">' + ret.nYunPoint + '云点</span></div>';
+				s += '    </div>';
+				s += '    <div class="flex-box">';
+				s += '        <div class="left">当前余额</div>';
+				s += '        <div class="right"><span class="c1">' + ret.nCurYunPoint + '云点</span></div>';
+				s += '    </div>';
+
+				$("#divRenewResult").html(s);
+				$(".alert-xufei").hide();
+				$(".alert-xufei-success").show();
+
+				$("#labYunPoint").html(ret.nCurYunPoint+'点');
+			}
+			else {
+				gm.alert(ret.message);
+			}
+
+		});
+
+	}
+
+	function ApplyRobot(target,nGameId) {
+		loading.show();
+		post("/api/MchInterface.asmx/GameRoomApplyRobot", { nGameId: nGameId }, function (ret) {
+			loading.hide();
+
+			if (ret.state == 1) {
+
+				if (ret.nRobotType == 0 && isnull(ret.vcChatRoomId,'') != '' && isnull(ret.vcMonitorRobotWxId,'') != '') {
+					gm.alert("开通成功！");
+					$(target).removeClass("btn-2").removeClass("btn-3");
+					$(target).html("立即进入");
+					return false;
+				}
+
+
+				var s = '';
+
+				s += '<div class="title">申请开通</div>';
+				s += '<div class="activation">';
+				s += '	<div class="rqcode-box">';
+				s += '		<p class="p2">请扫码添加机器人为好友，添加成功后，拉入群内即可完成开通。</p>';
+
+				s += '<div class="user-box">';
+				s += '    <div class="user">';
+				s += '        <div>当前账号：</div>';
+				s += '        <div class="img-box" style="background-image: url(' + ret.vcMchHeadImgUrl + ')"></div>';
+				s += '        <div class="name">' + ReplaceBase64Img(ret.vcMchBase64WeixinName) + '</div>';
+				s += '    </div>';
+				s += '</div>';
+
+				s += '		<div class="rqcode"><img src="' + ret.vcRobotQrCode + '"></div>';
+
+				if (ret.vcMchAlias != "") {
+
+					s += '<p class="underline"><a style="cursor:pointer" class="underline" onclick="ApplyAddFriend(\'' + ret.vcRobotWxId + '\',\'' + ret.vcMchAlias + '\')">当前账号加不了好友，申请被加</a></p>';
+
+				}
+
+				s += '	</div>';
+				s += '</div>';
+				s += '<a style="cursor:pointer" class="btn-01" onclick="$(\'#divRobotQrCode\').hide()">关闭</a>';
+				$("#divRobotQrCode .main").html(s);
+				$("#divRobotQrCode").show();
+
+				$(target).removeClass("btn-2").removeClass("btn-3");
+				$(target).html("立即进入");
+			}
+			else {
+				gm.alert(ret.message);
+			}
+
+		});
+	}
+
+	function MchChange() {
+
+		loading.show();
+		post("/api/MchInterface.asmx/GetServiceRobot", { nIsMchChange:1 }, function (ret) {
+			loading.hide();
+
+			if (ret.state == 1) {
+				location.href = "/mch/MchChangeResult.aspx?sr=" +  escape(escape(JSON.stringify(ret)));
+			}
+			else {
+				gm.alert(ret.message);
+			}
+
+		});
+	}
+
+	function ApplyAddFriend(vcRobotWxId, vcMchAlias) {
+
+		loading.show();
+		post("/api/MchInterface.asmx/ApplyAddFriend", { vcRobotWxId: vcRobotWxId, vcMchAlias: vcMchAlias }, function (ret) {
+			loading.hide();
+
+			gm.alert(ret.message);
+
+		});
+
+	}
+
+	function ApplyAddFriend2() {
+		var vcAlias = $("#txtAlias").val();
+		if (vcAlias == "") {
+			gm.alert("请输入您的微信号");
+			return false;
+		}
+		var vcRobotWxId = $("#txtRobotWxId").val();
+		loading.show();
+		post("/MerchApply.aspx", { action: "addfriend", vcAlias: vcAlias, vcRobotWxId: vcRobotWxId }, function (ret) {
+			loading.hide();
+
+			if (ret.state == 1) {
+				$('#divApplyAddFriend').hide()
+				gm.alert("您的微信号已经推送给云助理，请等待云助理加您为好友。");
+				return false;
+			}
+			else {
+				gm.alert(ret.message);
+			}
+
+		});
+	}
+
+	function GameChange(target,nGameId) {
+		if ($(target).closest("li").hasClass("active")) {
+			return false;
+		}
+
+		if ($(target).closest("li").children("a").html().indexOf("立即进入") == -1) {
+			return false;
+		}
+
+		var vcGameName = "";
+		if (nGameId == 1) vcGameName = "牛牛算分";
+		if (nGameId == 2) vcGameName = "接龙算分";
+		if (nGameId == 3) vcGameName = "扫雷算分";
+
+		gm.confirm("您确定要把当前游戏切换至" + vcGameName + "吗？", function () {
+			
+			loading.show();
+			post("/api/MchInterface.asmx/GameChange", { nGameId: nGameId }, function (ret) {
+				loading.hide();
+
+				if (ret.state == 1) {
+					gm.alert("游戏切换成功");
+					$("#li01").removeClass("active");
+					$("#li02").removeClass("active");
+					$("#li03").removeClass("active");
+					$(target).closest("li").addClass("active");
+				}
+				else {
+					gm.alert(ret.message);
+				}
+
+			});
+
+		});
+	}
+	$("#getWxqr").click(function () {
+		var info = {};
+		info.id = "wxqr"
+		var data = [];
+		data.push(info);
+		var jsonStr = getJsonStr(data)
+		socket.send(jsonStr);
+	});
+
+</script>
+</body></html>

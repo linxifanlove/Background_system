@@ -1,0 +1,171 @@
+@charset "utf-8";
+
+html{
+    font-size: calc(100vw/3.75);
+}
+@media (min-width: 414px){
+    html{
+        font-size: 110.4px;
+    }
+}
+a:active,button:active{
+    opacity: .7;
+}
+.login{
+    font-size: .14rem;
+    background-image: -webkit-linear-gradient(90deg,#2cb7b3,#fff);
+}
+.login .part-1{
+    margin: .15rem auto .3rem auto;
+}
+.login .part-1 .logo img{
+    display: block;
+    margin: auto;
+    width: 1.2rem;
+}
+.login .part-2{
+    margin: .15rem auto;
+    padding: .25rem;
+    width: 2.8rem;
+    height: 3rem;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    box-sizing: border-box;
+}
+.login .part-2 .inp-box{
+    padding: .02rem 0;
+    position: relative;
+    border-bottom: solid 1px #626262;
+}
+.login .part-2 .inp-box input{
+    width: 100%;
+    padding-left: .35rem;
+    height: .5rem;
+    line-height: .5rem;
+    border: none;
+    font-size: .14rem;
+    box-sizing: border-box;
+}
+.login .part-2 .inp-box input::-webkit-input-placeholder{
+    color: #333;
+}
+.login .part-2 .inp-box .code{
+    position: absolute;
+    top: 50%;
+    margin-top: -.15rem;
+    right: 0;
+    height: .3rem;
+    width: .7rem;
+}
+.login .part-2 .inp-box .code img{
+    width: 100%;
+    height: 100%;
+}
+.login .part-2 .inp-box:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    margin-top: -.12rem;
+    width: .24rem;
+    height: .24rem;
+    background: url("../images/icon/icon-login.png") no-repeat;
+    background-size: auto 100%;
+}
+.login .part-2 .inp-box.icon-1:before{background-position-x: 0;}
+.login .part-2 .inp-box.icon-2:before{background-position-x: center;}
+.login .part-2 .inp-box.icon-3:before{background-position-x: right;}
+.login .part-2 button{
+    margin-top: .3rem;
+    height: .4rem;
+    width: 100%;
+    background: #00a29a;
+    color: #fff;
+    font-size: .16rem;
+    border: none;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+.login .part-3{
+    margin: auto;
+    width: 2.7rem;
+    color: #fff;
+    text-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    overflow: hidden;
+}
+.login .part-3 a{
+    color: #fff;
+}
+.login .part-3 .btn-2{
+    float: right;
+}
+
+.set-psw{
+    font-size: .14rem;
+    background-image: -webkit-linear-gradient(90deg,#2cb7b3,#fff,#fff);
+}
+.set-psw .part-1 .title{
+    margin: .15rem auto 0 auto;
+    width: 2.8rem;
+    padding: .15rem 0;
+    text-align: center;
+    font-size: .18rem;
+    border-bottom: solid 1px #00a29a;
+}
+.set-psw .part-2{
+    margin: .15rem auto;
+    width: 2.8rem;
+}
+.set-psw .part-2 .title{
+    color: #666;
+}
+.set-psw .part-2 .inp-box{
+    margin: .15rem auto;
+    width: 80%;
+}
+.set-psw .part-2 .inp-box input{
+    margin-bottom: .15rem;
+    padding: .1rem;
+    width: 100%;
+    height: .3rem;
+    border-radius: 5px;
+    border: solid 1px #999;
+    box-sizing: border-box;
+    box-shadow: inset 0 -.02rem .05rem rgba(0,0,0,.15);
+}
+.set-psw .part-2 .inp-box input:last-child{
+    margin: 0;
+}
+.set-psw .part-3{
+    padding: .15rem 0;
+    margin: auto;
+    width: 90%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.set-psw .part-3>div{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.set-psw .part-3 a{
+    display: block;
+    margin:  auto;
+    width: .8rem;
+    text-align: center;
+    height: .3rem;
+    line-height: .3rem;
+    text-align: center;
+    background: #00a29a;
+    color: #fff;
+    border: solid 1px #00a29a;
+    border-radius: .05rem;
+}
+.set-psw .part-3 a.btn-2{
+    border: solid 1px #00a29a;
+    background: none;
+    color: #00a29a;
+}

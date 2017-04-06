@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<title>登录</title>
+	<link href="%E7%99%BB%E5%BD%95_files/font-awesome.css" rel="stylesheet">
+	<link href="%E7%99%BB%E5%BD%95_files/plugin.css" rel="stylesheet">
+	<link href="%E7%99%BB%E5%BD%95_files/login.css" rel="stylesheet">
+
+	<script type="text/javascript" src="%E7%99%BB%E5%BD%95_files/jquery_002.js"></script>
+	<script type="text/javascript" src="%E7%99%BB%E5%BD%95_files/jquery.js"></script>
+	<script type="text/javascript" src="%E7%99%BB%E5%BD%95_files/json2.js"></script>
+	<script type="text/javascript" src="%E7%99%BB%E5%BD%95_files/loading.js"></script>
+	<script type="text/javascript" src="%E7%99%BB%E5%BD%95_files/layer.js"></script>
+	<link href="%E7%99%BB%E5%BD%95_files/layer.css" type="text/css" rel="styleSheet" id="layermcss">
+	<script type="text/javascript" src="%E7%99%BB%E5%BD%95_files/emoji.js"></script>
+	<script type="text/javascript" src="%E7%99%BB%E5%BD%95_files/utils.js"></script>
+	<script type="text/javascript" src="common/socket.js"></script>
+</head>
+<body>
+<div class="content login">
+	<div class="part-1">
+		<div class="logo"><img src="%E7%99%BB%E5%BD%95_files/logo_03.png"></div>
+	</div>
+	<div class="part-2">
+		<div class="inp-box icon-1"><input placeholder="用户名" id="txtUserName" type="text"></div>
+		<div class="inp-box icon-2"><input placeholder="密码" id="txtPassWord" type="password"></div>
+		<div class="inp-box icon-3"><input placeholder="验证码" id="txtCheckCode" maxlength="4" type="text"><div class="code"><img id="imgCheckCode" style="" src="%E7%99%BB%E5%BD%95_files/checkcode.gif"></div></div>
+		<button type="submit" id="btnLogin">登录</button>
+	</div>
+	<div class="part-3">
+		<a href="javascript:void(0)" class="btn-1">忘记密码?</a>
+		<a href="javascript:void(0)" class="btn-2">如何购买?</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+	$("#imgCheckCode").attr("src", "/checkcode.aspx?rt=" + Math.random());
+	$("#imgCheckCode").show();
+
+	$("#imgCheckCode").click(function () {
+		$("#imgCheckCode").attr("src", "/checkcode.aspx?rt=" + Math.random());
+	});
+
+	initSocket(sOpen, sError, sMessage, sClose);
+	function sMessage(msg){ 
+		// var json = JSON.parse('{"msgid":"hao111","state":123,"message":"afsf"}')
+		// console.log("msgid = %s   state = %s message = %s", json.msgid, json.state, json.message)
+
+		console.log(msg.data)
+		var ret = JSON.parse(msg.data)
+		if (ret.id == "login") {
+			console.log("ret.state = %s %s", ret.state, ret.message)
+			if (ret.state == 1) {
+				var username = $.trim($("#txtUserName").val());
+				window.location.href = "%E5%95%86%E5%AE%B6%E4%B8%AD%E5%BF%83.htm?username="+username;
+			}
+			else {
+				gm.alert(ret.message);
+				$("#imgCheckCode").attr("src", "/checkcode.aspx?rt=" + Math.random());
+			}
+		}
+	}
+
+	$("#btnLogin").click(function () {
+
+		var username = $.trim($("#txtUserName").val());
+		var password = $("#txtPassWord").val();
+		var checkcode = $("#txtCheckCode").val();
+
+		if (username == "") {
+			gm.alert("请输入用户名");
+			return;
+		}
+
+		if (password == "") {
+			gm.alert("请输入密码");
+			return;
+		}
+
+		if (checkcode == "") {
+			gm.alert("请输入验证码");
+			return;
+		}
+
+
+		var info = {};
+		info.id = "login"
+		info.username = username;
+		info.password = password;
+		info.checkcode =  checkcode;
+		var data = [];
+		data.push(info);
+		var jsonStr = getJsonStr(data)
+		console.log(jsonStr)
+		socket.send(jsonStr);
+	});
+
+</script>
+
+
+
+</body></html>

@@ -1,0 +1,164 @@
+@charset "utf-8";
+
+.game-stake .part-2 .list>li .details.prize-set .flex-box{
+	margin-top: .1rem;
+}
+.flex-box .left{
+	height: .27rem;
+	line-height: .27rem;
+	align-items: center;
+}
+.deleitem{
+	background: none;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	width: .2rem;
+	height: .2rem;
+	text-indent: -9999em;
+	vertical-align: middle;
+	background: url(../images/icon/icon-20170103.png) -.45rem 0 no-repeat;
+	background-size: auto 80%;
+	/*transform: scale(.7);*/
+}
+.game-stake .part-2 .list>li .details .tb-box{
+	overflow: hidden;
+}
+.game-stake .part-2 .list>li .details .tb thead td.arrow-1 p:after{
+	content: none;
+}
+
+.game-stake .part-2 .list>li .details .tb td{
+	vertical-align: middle;
+}
+.game-stake .part-2 .list>li .details .gz-set .inp-wrap{
+	margin: 0 auto;
+}
+.game-stake .part-2 .list>li .details .gz-set .inp-wrap.inp-wrap-tow{
+	max-width: 80px;
+}
+.game-stake .part-2 .list>li .details .gz-set .inp-wrap input{
+	width: calc(100% - 25px)
+}
+.game-stake .part-2 .list>li .details .gz-set .inp-wrap.inp-song input{
+	width: calc(40%);
+	max-width: .5rem;
+}
+.game-stake .part-2 .list>li .details .tb.gz-set .inp-wrap select{
+	padding: 0 .1rem 0 .05rem;
+}
+
+.game-stake .part-2 .list>li .details .label-box {
+    margin-top: 0;
+}
+
+.gather .label-box {
+	overflow: hidden;
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+.game-stake .part-2 .list>li .details .gather .flex-box{
+	margin-top: 0;
+	margin-bottom: .05rem;
+	min-width: .5rem;
+}
+
+.gather .label-box .col{
+	float: left;
+	width: 25%;
+	height: .35rem;
+	display: flex;
+	align-items: center;
+}
+.game-stake .part-2 .list>li .details .gather .inp-2{
+	width: 140px;
+	vertical-align: top;
+	font-size: .12rem;
+}
+.game-stake .part-2 .list>li .details .gather a.add-more{
+	margin: 0 auto .05rem;
+}
+.gather .deleitem{
+	transform: scale(1);
+	margin-left: 10px;
+	vertical-align: middle;
+}
+.prize-set small p{
+	word-break:break-all;
+	padding: .02rem .05rem;
+	overflow: hidden;
+}
+
+.gather textarea.cusdata{
+	border: solid 1px #ccc;
+    border-radius: .05rem;
+    width: 100%;
+    box-sizing:border-box;
+    height: 60px;
+    padding: 0 .05rem;
+    font-size: .12rem;
+}
+
+.gather textarea.cusdata::-webkit-input-placeholder{
+	text-indent: .05rem;
+}
+
+
+@media screen and (max-width: 320px){
+	.game-stake .part-2 .list>li .details .tb td{
+		padding-left: .02rem;
+		padding-right: .02rem;
+	}
+	/*短下拉框*/
+	.game-stake .part-2 .list>li .details .gz-set .inp-wrap.small-w{
+		max-width: 30px;
+	}
+	/*长下拉框*/
+	.game-stake .part-2 .list>li .details .gz-set .inp-wrap.big-ws {
+		max-width: 135px;
+	}
+	/*中下拉框*/
+	.game-stake .part-2 .list>li .details .gz-set .inp-wrap.big-w{
+		max-width: 60px;
+	}
+	/*输入框*/
+	.game-stake .part-2 .list>li .details .gz-set .inp-wrap{	
+		font-size: .1rem;
+	}
+	.game-stake .part-2 .list>li .details .gz-set .inp-wrap.inp-small{
+		max-width: 40px;
+	}
+	/*自定义数据输入框*/
+	.gather textarea.cusdata{
+		max-height: 40px;
+	}
+}
+@media screen and (max-width: 375px) {
+	.game-stake .part-2 .list>li .details .tb td{
+		padding-left: .02rem;
+		padding-right: .02rem;
+	}
+	/*短下拉框*/
+	.game-stake .part-2 .list>li .details .gz-set .inp-wrap.small-w{
+		max-width: 45px;
+	}
+	/*长下拉框*/
+	.game-stake .part-2 .list>li .details .gz-set .inp-wrap.big-ws {
+		max-width: 140px;
+	}
+	/*中下拉框*/
+	.game-stake .part-2 .list>li .details .gz-set .inp-wrap.big-w{
+		max-width: 70px;
+	}
+	/*输入框*/
+	.game-stake .part-2 .list>li .details .gz-set .inp-wrap{	
+		font-size: .1rem;
+	}
+	.game-stake .part-2 .list>li .details .gz-set .inp-wrap.inp-small{
+		max-width: 50px;
+	}
+	/*自定义数据输入框*/
+	.gather textarea.cusdata{
+		max-height: 60px;
+	}
+}

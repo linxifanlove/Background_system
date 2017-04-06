@@ -1,0 +1,352 @@
+@charset "utf-8";
+
+.activation .box-1 {
+    position: relative;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+.activation > .none {
+    box-shadow: 0 5px 5px rgba(0, 0, 0, .05);
+    background: #fff;
+}
+
+.activation > .none img {
+    margin: auto;
+    display: block;
+    width: 100%;
+}
+
+.activation > .none .money {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #3eb9e3;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, .1);
+}
+
+.activation .box-1 .img-box {
+    width: 50px;
+    height: 50px;
+}
+
+.activation .box-1 .left {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.activation .box-1 .left img {
+    width: 100%;
+}
+
+.activation .box-1 .right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.activation .box-1 .right .p1 {
+    padding: 10px 10px 0 70px;
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    font-size: 16px;
+}
+
+.activation .box-1 .right .p1 .name {
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 16px;
+}
+
+.activation .box-1 .right .p1 .name img {
+    display: inline;
+    position: relative;
+    top: 4px;
+    height: 20px;
+}
+
+.activation .box-1 .right .p2 {
+    padding: 5px 10px 0 70px;
+}
+
+.activation .box-1 .right .p2 a {
+    padding: 2px 5px;
+    color: #10aeff;
+    background: #fff;
+    border-radius: 3px;
+    border: solid 1px #10aeff;
+}
+
+.activation .box-2 {
+    margin-bottom: 10px;
+    border-bottom: 0;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#ddd' x='0' y='0.5' width='100%' height='0.5'/></svg>"), url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#ddd' x='0' y='0' width='100%' height='0.5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 0 100%, 0 0;
+    overflow: hidden;
+}
+
+.activation .box-2 li {
+    position: relative;
+    padding: 15px 0;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #fff;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100%' height='1'><rect fill='#ddd' x='0' y='0.5' width='100%' height='0.5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 0 100%, 0 0;
+}
+
+.activation .box-2 li:first-child {
+    margin-top: 1px;
+}
+
+.activation .box-2 li .img-box {
+    margin: 0 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
+    overflow: hidden;
+    float: left;
+}
+
+.activation .box-2 li .img-box img {
+    width: 100%;
+}
+
+.activation .box-2 li .name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+.activation .box-2 li .name p {
+    padding: 0 90px 0 50px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.activation .box-2 li .name p img{
+    position: relative;
+    top: 3px;
+    display: inline;
+    height: 16px;
+}
+.activation .box-2 li .btn-box {
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+
+.activation .box-2 li .btn-box a {
+    position: relative;
+    z-index: 5;
+    margin: 0 10px 0 0;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    background: #fff;
+    color: #10aeff;
+    border: solid 1px #10aeff;
+    border-radius: 30px;
+    float: left;
+}
+.activation .box-2 li .btn-box a.btn-1{
+    color: #10aeff;
+    border: solid 1px #10aeff;
+}
+.activation .box-2 li .btn-box a.btn-2 {
+    border: solid 1px #f77460;
+    color: #f77460;
+}
+.activation .box-2 li .btn-box a.btn-3{
+    width: 70px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background: #10aeff;
+    border-radius: 3px;
+    font-size: 14px;
+}
+.activation .box-2 li .btn-box a.disabled {
+    color: #b4b4b4;
+    border: solid 1px #b4b4b4;
+}
+
+.activation .box-2 li .btn-box a.btn-warning {
+    color: #f8b651;
+    border-color: #f8b651;
+}
+
+.activation .box-2 li .add {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 16px;
+    color: #10aeff;
+}
+
+.activation .box-2 li .add .fa {
+    padding-right: 5px;
+}
+
+.activation .box-2 li.admin:after {
+    content: "\f007 ";
+    position: absolute;
+    top: 10px;
+    left: 30px;
+    height: 15px;
+    width: 15px;
+    line-height: 15px;
+    text-align: center;
+    font-size: 12px;
+    font-family: FontAwesome;
+    color: #10aeff;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, .1);
+}
+
+.activation .box-2 li.super .img-box {
+    border-radius: 0;
+}
+
+.activation .rqcode-box{
+    padding: 10px 0;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,.05);
+}
+.activation .rqcode-box .rqcode{
+    margin: 10px auto;
+    width: 166px;
+    height: 166px;
+    overflow: hidden;
+}
+.activation .rqcode-box .rqcode img{
+    width: 100%;
+}
+.activation .rqcode-box .p1{
+    padding: 0 10px;
+    text-align: center;
+    color: #999;
+}
+.activation .rqcode-box .p1 a{
+    display: block;
+    color: #10AEFF;
+}
+.activation .rqcode-box .p2{
+    margin: 10px auto;
+    width: 80%;
+    line-height: 20px;
+}
+.activation .rqcode-box .p2-1{
+    text-align: center;
+}
+.activation .cmd{
+    margin-bottom: 10px;
+    text-align: center;
+}
+.activation .cmd .c1{
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    color: #00a29a;
+}
+
+.activation .btn-box{
+    margin: 15px 10px 10px 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.activation .btn-box>li{
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.activation .btn-box>li a{
+    margin: auto;
+    display: block;
+    width: 110px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 3px;
+    background: #10aeff;
+    color: #fff;
+    font-size: 16px;
+}
+.activation .user-box{
+    text-align: center;
+}
+.activation .user-box .u1{
+    padding-bottom: 5px;
+    color: #333;
+}
+.activation .underline{
+    text-decoration: underline;
+    text-align: center;
+}
+.activation .user-box .user{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+.activation .user-box .user .img-box{
+    margin-right: 5px;
+    width: 25px;
+    min-width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: 50%
+}
+.activation .user-box .user .name{
+    color: #00a29a;
+}
+.activation .user-box .user .name img{
+    display: inline;
+    height: .16rem;
+    vertical-align: middle;
+}
+.wxid-inp{
+    padding: 0 10px;
+    margin: 10px 0 15px 0;
+    width: 100%;
+    height: 40px;
+    border: solid 1px #e5e5e5;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
