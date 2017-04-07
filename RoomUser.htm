@@ -129,9 +129,9 @@
 	socket.send(jsonStr);
 	console.log("jsonStr = %s", jsonStr)
 	function sMessage(msg){ 
-		console.log(msg.data)
 		var ret = JSON.parse(msg.data)
-		if (ret.id == "RoomUserList") {loading.hide();
+		if (ret.id == "RoomUserList") {
+			loading.hide();
 			dr = ret
 			$("#labTotalMoney").html(parseInt(dr.dmTotalMoney));
 			if (dr.nNotice == 1) {
@@ -189,6 +189,35 @@
 			else
 				$("#divList tr[isroomuser='0']").show();
 
+		}else if (ret.id == "AddMoneys") {
+			if (ret.state == 0) {
+				gm.alert(ret.message);
+				return false;
+			}
+
+			// var dr = ds[0][0];
+
+			// if (dr.nState == 0) {
+			// 	gm.alert(dr.vcMessage);
+			// 	return false;
+			// }
+
+			$('input[name="addmoney"]').val('');
+			$('input[name="submoney"]').val('');
+
+			var dt = ret.retList;
+
+			for (var i = 0; i < dt.length; i++) {
+				var dr = dt[i];
+				$('tr[memberid="' + dr.nMemberId + '"]').find(".tdmoney").html(parseInt(dr.dmCurMoney) + '分');
+			}
+
+			//提示
+			layer.open({
+				content: '操作成功'
+			  , skin: 'msg'
+			  , time: 1
+			});
 		}
 	}
 
@@ -255,38 +284,15 @@
 				gm.alert("请输入积分");
 				return false;
 			}
-			post("/api/MchInterface.asmx/MemberAddMoneys", { vcMemberUserVal: JSON.stringify(memberUserVal), nNotice: ($('#chkNotice')[0].checked == true ? 1 : 0) }, function (ds) {
+			var info = {};
+			info.id = "AddMoneys"
+			info.data = memberUserVal
+			var data = [];
+			data.push(info);
+			var jsonStr = getJsonStr(data)
+			socket.send(jsonStr);
 
-				if (ds.state == 0) {
-					gm.alert(ds.message);
-					return false;
-				}
 
-				var dr = ds[0][0];
-
-				if (dr.nState == 0) {
-					gm.alert(dr.vcMessage);
-					return false;
-				}
-
-				$('input[name="addmoney"]').val('');
-				$('input[name="submoney"]').val('');
-
-				var dt = ds[1];
-
-				for (var i = 0; i < dt.length; i++) {
-					var dr = dt[i];
-					$('tr[memberid="' + dr.nMemberId + '"]').find(".tdmoney").html(parseInt(dr.dmCurMoney) + '分');
-				}
-
-				//提示
-				layer.open({
-					content: '操作成功'
-				  , skin: 'msg'
-				  , time: 1
-				});
-
-			});
 		}
 
 		function ClearAll() {
