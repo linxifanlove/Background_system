@@ -93,3 +93,49 @@ def RoomUserList(jsondata):
     ret = json.dumps(data)
     return ret
 
+def AddMoneys(jsondata):
+    #客户端上传加减分信息
+    print 'AddMoneys = '
+    print jsondata['data'][0]['nMemberId']
+    print jsondata['data'][0]['nUserId']
+    print jsondata['data'][0]['nValue'] #金钱数
+
+    data = {
+        'id': 'AddMoneys',
+        'state': 1,
+        'message': u"余额不足",
+        'retList': [
+            {
+                'nMemberId': 146475,
+                'dmCurMoney': 12538.00,
+            },
+            {
+                'nMemberId': 142016,
+                'dmCurMoney': 12310.00,
+            }
+        ]
+    }
+    ret = json.dumps(data)
+    return ret
+
+def MoneyGoldList(jsondata):
+    #获取玩家分数
+    data = {
+        'id': 'MoneyGoldList',
+        'retList': [
+            {
+                'vcBetNickName': '',
+                'dmMoney': 12508.00,
+                'nGoldAmount':0,
+                'vcBase64WeixinName':'5p6X576954S2',
+            },
+            {
+                'vcBetNickName': '',
+                'dmMoney': 10010.00,
+                'nGoldAmount':0,
+                'vcBase64WeixinName':'S2V2aW4=',
+            }
+        ]
+    }
+    ret = json.dumps(data)
+    return ret

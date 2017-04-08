@@ -24,6 +24,10 @@ def data_client(client, server,msg):
     elif jsondata['id'] == 'wxqr':
         retdata = func.getWxqr(jsondata)
         server.send_message(client, func.GameRoomGameList(jsondata))
+    elif jsondata['id'] == 'AddMoneys':
+        retdata = func.AddMoneys(jsondata)
+    elif jsondata['id'] == 'MoneyGoldList':
+        retdata = func.MoneyGoldList(jsondata)
 
     print retdata
     server.send_message( client, retdata)

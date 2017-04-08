@@ -284,6 +284,7 @@
 				gm.alert("请输入积分");
 				return false;
 			}
+			console.log(JSON.stringify(memberUserVal))
 			var info = {};
 			info.id = "AddMoneys"
 			info.data = memberUserVal
@@ -291,7 +292,6 @@
 			data.push(info);
 			var jsonStr = getJsonStr(data)
 			socket.send(jsonStr);
-
 
 		}
 

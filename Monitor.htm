@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>监控台</title>
+    <link href="common/font-awesome.css" rel="stylesheet">
+    <link href="common/plugin.css" rel="stylesheet">
+    <link href="common/game-details.css" rel="stylesheet">
+    <link href="common/layer.css" type="text/css" rel="styleSheet" id="layermcss">
+
+    <script type="text/javascript" src="common/jquery.js"></script>
+    <script type="text/javascript" src="common/jquery_002.js"></script>
+    <script type="text/javascript" src="common/json2.js"></script>
+    <script type="text/javascript" src="common/loading.js"></script>
+    <script type="text/javascript" src="common/layer.js"></script>
+    <script type="text/javascript" src="common/emoji.js"></script>
+    <script type="text/javascript" src="common/utils.js"></script>
+    <script type="text/javascript" src="common/socket.js"></script>
+
+    <script type="text/javascript">
+        var nGameRoomId = '1857';
+    </script>
+
+    <style>
+        .sele-type {
+            position: relative;
+            display: block;
+        }
+
+            .sele-type .arrow {
+                content: "";
+                display: block;
+                width: 20px;
+                height: calc(100% - 7px);
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                pointer-events: none;
+                background-color: rgba(255,255,255,.15);
+            }
+
+        .arrow:after {
+            content: "";
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 5px solid #fff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -2px 0 0 -5px;
+        }
+
+        @media screen and (min-width:0\0) {
+            .sele-type .arrow {
+                background: transparent;
+            }
+
+            .arrow:after {
+                content: none;
+            }
+        }
+
+        .sele-type select {
+            min-width: .5rem;
+            width: 100%;
+            height: .3rem;
+            padding: .03rem 0 .03rem .05rem;
+            -webkit-appearance: none;
+            border: none;
+            background-color: #000;
+            background-color: rgba(255,255,255,.15);
+            font-size: inherit;
+            color: inherit;
+            border: 1px solid #666;
+            margin-bottom: 5px;
+            border-radius: 3px;
+            text-align: center;
+            line-height: 24px;
+        }
+
+        .sele-type option {
+            background-color: inherit;
+        }
+    </style>
+
+<style id="shcl1" type="text/css">@-o-keyframes shcl1_bounce{0%{visibility:visible;-o-transform:scale(1)}80%{-o-transform:scale(.3)}100%{-o-transform:scale(1)}}@-ms-keyframes shcl1_bounce{0%{visibility:visible;-ms-transform:scale(1)}80%{-ms-transform:scale(.3)}100%{-ms-transform:scale(1)}}@-webkit-keyframes shcl1_bounce{0%{visibility:visible;-webkit-transform:scale(1)}80%{-webkit-transform:scale(.3)}100%{-webkit-transform:scale(1)}}@-moz-keyframes shcl1_bounce{0%{visibility:visible;-moz-transform:scale(1)}80%{-moz-transform:scale(.3)}100%{-moz-transform:scale(1)}}@keyframes shcl1_bounce{0%{visibility:visible;transform:scale(1)}80%{transform:scale(.3)}100%{transform:scale(1)}}</style></head>
+<body>
+
+    <div class="content game-details">
+
+        <!--监控鸡眼-->
+        <div id="divNetStatus" style="width: 3px; height: 3px; border-radius: 3px; position: absolute; z-index: 9999; top: 2px; right: 2px; background: rgb(153, 255, 102) none repeat scroll 0% 0%; display: none;"></div>
+
+        <div class="top-box">
+            <div class="row-1">
+                <div class="col">
+                    <div class="tit"><i class="icon icon-01"></i>玩家总积分</div>
+                </div>
+                <div class="col">
+                    <div class="tit"><i class="icon icon-02"></i>本轮盈亏</div>
+                </div>
+                <div class="col">
+                    <div class="tit"><i class="icon icon-03"></i>玩家总金币</div>
+                </div>
+            </div>
+            <div class="row-1">
+                <div id="divAddMoney" class="col">
+                    <div class="num"></div>
+                    <div class="up updown" style="display: none;">
+                        <p class="p1"></p>
+                        <p class="p3"></p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="num-center" id="divMchTermWinMoney">
+                        <div>
+                            <b></b>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="divAddGold" class="col">
+                    <div class="num">0</div>
+                    <div class="down updown" style="display: none;">
+                        <p class="p1"></p>
+                        <p class="p3"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="row-2">
+                <div class="col">
+                    <div class="btn-box">
+                        <a id="btnCancel" style="cursor: pointer" class="btn">重推</a>
+                        <a id="btnReCal" style="cursor: pointer" class="btn">重算</a>
+                        <a id="btnRollbackCancel" style="cursor: pointer" class="btn">重返</a>
+                        <a id="btnRefresh" style="cursor: pointer" class="btn">刷新成员</a>
+                        <a id="btnSetTuo" style="cursor: pointer" class="btn">托管理</a>
+                        <a id="btnRoundDetail" style="cursor: pointer" class="btn">本期明细</a>
+                        <a id="btnTermClose" style="cursor: pointer" class="btn">收盘</a>
+                        <a id="btnException" style="cursor: pointer" class="btn">异常报警</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row-2">
+                <div class="col">
+                    <div class="note"><i class="icon icon-04"></i><span id="labNotice">暂无消息</span></div>
+                </div>
+                <div class="col">
+                    <label>
+                        <input id="chkBzRunOn" class="p-chkbox-2" checked="checked" type="checkbox">自动上庄</label>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-box" id="divWrapper">
+            <div class="tb-1-wrapper">
+                <ul class="tb tb-1" id="divLog">
+                    <li>    
+                        <table class="tb tb-2">        
+                            <tbody></tbody>    
+                        </table>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        $("#btnCancel").click(function () {
+
+            post("/api/MchInterface.asmx/NiuCancel", { nGameRoomId: nGameRoomId }, function (ret) {
+                gm.tip(ret.message);
+            });
+
+        });
+
+        $("#btnRefresh").click(function () {
+
+            post("/api/MchInterface.asmx/RoomUserRefresh", { nGameRoomId: nGameRoomId }, function (ret) {
+                gm.tip(ret.message);
+            });
+
+        });
+
+        $("#btnReCal").click(function () {
+
+            window.location.href = "/mch/Recalculate.aspx?nGameRoomId=" + nGameRoomId + "&rt=" + Math.random();
+
+        });
+
+        $("#chkBzRunOn").click(function () {
+
+            var nStatus = $("#chkBzRunOn")[0].checked ? 1 : 0;
+            post("/api/MchInterface.asmx/NiuAutoDeal", { nGameRoomId: nGameRoomId, nStatus: nStatus }, function (ret) {
+                gm.tip(ret.message);
+            });
+
+        });
+
+        $("#btnSetTuo").click(function () {
+
+            window.location.href = "/mch/TuoList.aspx?rt=" + Math.random();
+
+        });
+
+        $("#btnRoundDetail").click(function () {
+
+            if (typeof (window.vcRoundNo) == "string") {
+                window.location.href = "/mch/NiuRoundInfo.aspx?vcRoundNo=" + window.vcRoundNo + "&rt=" + Math.random();
+            }
+
+        });
+
+        $("#btnTermClose").click(function () {
+
+            post("/api/MchInterface.asmx/NiuCloseTerm", { nGameRoomId: nGameRoomId }, function (ret) {
+
+                if (ret.state == 1) {
+                    window.location.href = "/mch/NiuTermInfo.aspx?nGameRoomId=" + ret.nGameRoomId + "&nTermNo=" + ret.nTermNo + "&rt=" + Math.random();
+                }
+                else {
+                    gm.alert(ret.message);
+                }
+
+            });
+
+        });
+
+        $("#divMchTermWinMoney").click(function () {
+
+            location.href = "/mch/MchWinStat.aspx";
+
+        });
+
+        $("#btnRollbackCancel").click(function () {
+
+            gm.confirm("是否确定将本期开奖结果重置，并使本期资金返还至上一期结束后的状态？", function () {
+
+                post("/api/MchInterface.asmx/NiuRollbackCancel", { nGameRoomId: nGameRoomId }, function (ret) {
+                    if (ret.state == 1) {
+                        gm.alert("本期开奖已重返成功！");
+                    }
+                    else {
+                        gm.alert(ret.message);
+                    }
+                });
+
+            });
+
+        });
+
+        function append(str) {
+            $("#divLog").append(str);
+            var divWrapper = document.getElementById('divWrapper');
+            divWrapper.scrollTop = divWrapper.scrollHeight;
+        }
+
+        /** 积分变动动画 **/
+        function MoneyAnimate(num) {
+
+            var text = num > 0 ? "上分" : "下分";
+            var type = num > 0 ? "up" : "down";
+
+            $("#divAddMoney .updown .p1").html(text);
+            $("#divAddMoney .updown .p3").html((parseInt(num) >= 0 ? '+' : '') + num);
+
+            $("#divAddMoney .num").addClass("active");
+            if (type == "up") {
+                $("#divAddMoney .updown").removeClass("down").addClass("up");
+            }
+            else {
+                $("#divAddMoney .updown").removeClass("up").addClass("down");
+            }
+            $("#divAddMoney .updown").show();
+
+            window.setTimeout(function () {
+                $("#divAddMoney .num").removeClass("active");
+                $("#divAddMoney .updown").hide();
+            }, 2000);
+
+        }
+
+        /** 金币变动动画 **/
+        function GoldAnimate(num) {
+
+            var text = num > 0 ? "上分" : "下分";
+            var type = num > 0 ? "up" : "down";
+
+            $("#divAddGold.updown .p1").html(text);
+            $("#divAddGold .updown .p3").html((parseInt(num) >= 0 ? '+' : '') + num);
+
+            $("#divAddGold .num").addClass("active");
+            if (type == "up") {
+                $("#divAddGold .updown").removeClass("down").addClass("up");
+            }
+            else {
+                $("#divAddGold .updown").removeClass("up").addClass("down");
+            }
+            $("#divAddGold .updown").show();
+
+            window.setTimeout(function () {
+                $("#divAddGold .num").removeClass("active");
+                $("#divAddGold .updown").hide();
+            }, 2000);
+
+        }
+
+        /** 积分金币变动 **/
+        function MoneyGoldChange(dr) {
+
+            // 显示玩家总积分
+            $("#divAddMoney .num").html(parseInt(dr.dmPlayersMoney));
+            // 显示玩家总金币
+            $("#divAddGold .num").html(parseInt(dr.nPlayersGold));
+
+            // 原来的积分
+            var money0 = window.playersMoney > 0 ? window.playersMoney : 0;
+            // 现在的积分
+            var money1 = parseInt(dr.dmPlayersMoney);
+            // 原来的金币
+            var gold0 = window.playersGold > 0 ? window.playersGold : 0;
+            // 现在的金币
+            var gold1 = parseInt(dr.nPlayersGold);
+
+            window.playersMoney = money1;
+            window.playersGold = gold1;
+
+            // 积分相差
+            var moneyNum = money1 - money0;
+            // 金币相差
+            var goldNum = gold1 - gold0;
+
+            if (moneyNum != 0) {
+                MoneyAnimate(moneyNum);
+            }
+
+            if (goldNum != 0) {
+                GoldAnimate(goldNum);
+            }
+        }
+
+        /** 积分金币变动 **/
+        function GoldMoneyChange(data) {
+
+            if (data.results) {
+                var dt = data.results;
+                if (dt.length > 0) {
+                    var dr = dt[dt.length - 1];
+                    MoneyGoldChange(dr);
+                }
+            }
+            else {
+                MoneyGoldChange(data);
+            }
+
+        }
+
+        /** 上庄 **/
+        function ShowDealerBet(dr) {
+
+            var time = (new Date()).format("HH:mm:ss");
+            var vcRoundNo = dr.vcRoundNo.substr(dr.vcRoundNo.length - 5);
+            var dealerName = dr.vcBetNickName;
+            if (dealerName == "") {
+                dealerName = ReplaceBase64Img(dr.vcBase64WeixinName);
+            }
+
+            var s = '';
+
+            s += '<li>';
+            s += '    <div class="time">' + time + '</div>';
+            s += '    <div class="text">';
+            s += '        <p class="c1">第' + parseInt(vcRoundNo) + '期上庄成功</p>';
+            s += '        <p>庄家：' + dealerName + ' 庄分：' + parseInt(dr.dmMoney) + '</p>';
+            s += '        <p>当前：' + parseInt(dr.dmDealerMoney) + '积分，' + parseInt(dr.nDealerGold) + '金币</p>';
+            s += '        <p>今日当庄：' + parseInt(dr.nDealerBetCount) + '，今日盈亏：' + (parseInt(dr.dmTodayWinMoney) > 0 ? '+' : '') + parseInt(dr.dmTodayWinMoney) + '</p>';
+            s += '    </div>';
+            s += '</li>';
+
+            append(s);
+
+        }
+
+        /** 撤消 **/
+        function Cancel(dr) {
+
+            var time = (new Date()).format("HH:mm:ss");
+            var vcRoundNo = dr.vcRoundNo.substr(dr.vcRoundNo.length - 5);
+
+            var s = '';
+
+            s += '<li>';
+            s += '    <div class="time">' + time + '</div>';
+            s += '    <div class="text">';
+            s += '        <p class="c1">第' + parseInt(vcRoundNo) + '期已撤消</p>';
+
+            if (dr.vcCancelReason != "") {
+                s += '    <p>' + dr.vcCancelReason + '</p>';
+            }
+
+            s += '    </div>';
+            s += '</li>';
+
+            append(s);
+        }
+
+        /** 进入押注 **/
+        function EnterBet(dr) {
+
+            var time = (new Date()).format("HH:mm:ss");
+            var vcRoundNo = dr.vcRoundNo.substr(dr.vcRoundNo.length - 5);
+
+            var s = '';
+
+            s += '<li>';
+            s += '    <div class="time">' + time + '</div>';
+            s += '    <div class="text">';
+            s += '        <p class="c1">第' + parseInt(vcRoundNo) + '期进入押注阶段（总时长：' + dr.nOverSeconds + '秒）</p>';
+            s += '        <p>最小下注：' + dr.nMinWager + '   最大下注：' + dr.nMaxWager + '</p>';
+            s += '        <p>最小梭哈：' + dr.nMinShowHand + '   最大梭哈：' + dr.nMaxShowHand + '</p>';
+            s += '    </div>';
+            s += '</li>';
+
+            append(s);
+
+            // 倒计时
+            function CountDown() {
+
+                var n = parseInt(dr.nOverSeconds);
+
+                $("#labNotice").html('押注正在进行，还剩：' + n + '秒');
+
+                window.countHandler = window.setInterval(function () {
+
+                    n--;
+
+                    if (n <= 0) {
+                        $("#labNotice").html('押注正在进行，还剩：0秒');
+                        window.clearInterval(window.countHandler);
+                        return;
+                    }
+
+                    $("#labNotice").html('押注正在进行，还剩：' + n + '秒');
+
+                }, 1000);
+            }
+
+            CountDown();
+
+        }
+
+        /** 实时押注 **/
+        function RealTimeBet(dr) {
+
+            var vcContent = "";
+            if (dr.vcContent) vcContent = dr.vcContent;
+
+            var time = (new Date()).format("HH:mm:ss");
+            var nickName = dr.vcBetNickName;
+            if (nickName == "") {
+                nickName = ReplaceBase64Img(dr.vcBase64WeixinName);
+            }
+
+            var s = '';
+
+            s += '<li>';
+            s += '    <div class="time">' + time + '</div>';
+            s += '    <div class="text">';
+            s += '        <p><span>' + nickName + '</span>' + (dr.nBetType == 1 ? '梭哈' : '押注') + '： ' + parseInt(dr.dmMoney);
+
+            s += ' ' + vcContent;
+
+            if (dr.dmCurMoney) {
+                s += '          （当前' + parseInt(dr.dmCurMoney) + '积分，' + parseInt(dr.nCurGold) + '金币）';
+            }
+
+            s += '        </p>';
+
+            s += '    </div>';
+            s += '</li>';
+
+            append(s);
+        }
+
+        /** 批量押注 **/
+        function WagerInsert(dr) {
+
+            var time = (new Date()).format("HH:mm:ss");
+
+            var s = '';
+
+            s += '<li>';
+            s += '    <div class="time">' + time + '</div>';
+            s += '    <div class="text">';
+            s += '        <p class="c1">押注截止，有效押注：' + dr.success.length + '人，无效押注：' + dr.error.length + '人</p>';
+            s += '        <p>玩家人数：' + dr.playCount + '，总分：' + parseInt(dr.totalMoney) + '</p>';
+            s += '        <p>梭哈总注：' + dr.showHand + '，总注：' + dr.totalWager + '</p>';
+            s += '        <p>发包数量：' + dr.redPackCount + '，应发：' + dr.redPackMoney + '</p>';
+            s += '    </div>';
+            s += '</li>';
+
+            append(s);
+
+        }
+
+        /** 发送红包 **/
+        function RedpackSended() {
+
+            var time = (new Date()).format("HH:mm:ss");
+
+            var s = '';
+            s += '<li>';
+            s += '    <div class="time">' + time + '</div>';
+            s += '    <div class="text">';
+            s += '        <p class="c1">已经发包</p>';
+            s += '    </div>';
+            s += '</li>';
+
+            append(s);
+
+        }
+
+        /** 通知指令 **/
+        function Notice(dr) {
+            $("#labNotice").html(dr.vcText);
+        }
+
+        function FilterPlayers(target) {
+            var type = $(target).val();
+
+            $.cookie("monitor_listtype", type);
+
+            $(target).closest("table").find("tr[istuo]").each(function (index, element) {
+
+                if (type == 0) {
+                    if ($(element).attr("istuo") == "1") {
+                        $(element).show();
+                    }
+                    else {
+                        $(element).hide();
+                    }
+                }
+
+                if (type == 1) {
+                    if ($(element).attr("istuo") == "1") {
+                        $(element).hide();
+                    }
+                    else {
+                        $(element).show();
+                    }
+                }
+
+                if (type == 2) {
+                    $(element).show();
+                }
+
+            });
+        }
+
+        /** 开奖 **/
+        function DrawPrize(data) {
+
+            var time = (new Date()).format("HH:mm:ss");
+
+            var dealer = data.dealer;
+
+            window.vcRoundNo = dealer.vcRoundNo;
+
+            var winner = data.winner;
+            var loser = data.loser;
+            var draw = data.draw;
+            var drink = data.drink;
+            var tuo = data.tuo;
+
+            var goldPeopleCount = 0;
+            var goldPrizeAmount = 0;
+            var goldPeoples = [];
+
+            if (Number(dealer.nPrizeMoney) > 0) {
+                goldPeopleCount++;
+                goldPrizeAmount += Number(dealer.nPrizeMoney);
+                dealer.nIsDealer = 1;
+                goldPeoples.push(dealer);
+            }
+
+            for (var i = 0; i < winner.length; i++) {
+                var dr = winner[i];
+
+                if (Number(dr.nPrizeMoney) > 0) {
+                    goldPeopleCount++;
+                    goldPrizeAmount += Number(dr.nPrizeMoney);
+                    goldPeoples.push(dr);
+                }
+            }
+
+            for (var i = 0; i < loser.length; i++) {
+                var dr = loser[i];
+
+                if (Number(dr.nPrizeMoney) > 0) {
+                    goldPeopleCount++;
+                    goldPrizeAmount += Number(dr.nPrizeMoney);
+                    goldPeoples.push(dr);
+                }
+            }
+
+            for (var i = 0; i < draw.length; i++) {
+                var dr = draw[i];
+
+                if (Number(dr.nPrizeMoney) > 0) {
+                    goldPeopleCount++;
+                    goldPrizeAmount += Number(dr.nPrizeMoney);
+                    goldPeoples.push(dr);
+                }
+            }
+
+            for (var i = 0; i < drink.length; i++) {
+                var dr = drink[i];
+
+                if (Number(dr.nPrizeMoney) > 0) {
+                    goldPeopleCount++;
+                    goldPrizeAmount += Number(dr.nPrizeMoney);
+                }
+            }
+
+            // 显示玩家总积分
+            $("#divAddMoney .num").html(parseInt(dealer.dmPlayersMoney));
+            // 显示玩家总金币
+            $("#divAddGold .num").html(parseInt(dealer.nPlayersGold));
+
+            window.playersGold = parseInt(dealer.nPlayersGold);
+            window.dmPlayersMoney = parseInt(dealer.dmPlayersMoney);
+
+            // 本轮盈亏
+            if (parseInt(dealer.dmMchTermWinMoney) >= 0) {
+                $("#divMchTermWinMoney").removeClass("green");
+                $("#divMchTermWinMoney div b").html("赢");
+                $("#divMchTermWinMoney div p").html(parseInt(dealer.dmMchTermWinMoney));
+            }
+            else {
+                $("#divMchTermWinMoney").addClass("green");
+                $("#divMchTermWinMoney div b").html("亏");
+                $("#divMchTermWinMoney div p").html(parseInt(dealer.dmMchTermWinMoney) * -1);
+            }
+
+            var s = '';
+            s += '<li>';
+            s += '    <table class="tb tb-2">';
+            s += '        <tbody>';
+            s += '        <tr>';
+            s += '            <td><p class="c1">第' + parseInt(dealer.vcRoundNo.slice(dealer.vcRoundNo.length - 5, dealer.vcRoundNo.length)) + '期已经开奖：</p></td>';
+            s += '            <td><p class="c1">' + time + '</p></td>';
+            s += '        </tr>';
+            s += '        <tr>';
+            s += '            <td>';
+            s += '                <p>尾包时间-头包时间：</p>';
+            s += '            </td>';
+            s += '            <td>';
+            s += '                <p>' + dealer.nEndFirstSeconds + '秒</p>';
+            s += '                <p class="clear"></p>';
+            s += '            </td>';
+            s += '        </tr>';
+            if (dealer.nNoDealerMode == 0) {
+                s += '        <tr>';
+                s += '            <td><p>庄包：</p></td>';
+                s += '            <td>';
+                s += '                <p>' + dealer.dmRedPackMoney + '  ' + dealer.nTimes + '倍  ' + dealer.vcNumName + '</p>';
+                s += '            </td>';
+                s += '        </tr>';
+                s += '        <tr>';
+                s += '            <td><p>庄家输赢：</p></td>';
+                s += '            <td>';
+                s += '                <p>' + (parseInt(dealer.dmWinMoney) > 0 ? '+' : '') + parseInt(dealer.dmWinMoney) + ' （吃' + loser.length + '赔' + winner.length + ' 平' + draw.length + '喝' + drink.length + '）</p>';
+                s += '            </td>';
+                s += '        </tr>';
+                s += '        <tr>';
+                s += '            <td><p>庄家当前：</p></td>';
+                s += '            <td>';
+                //s += '                <p>' + parseInt(dealer.dmCurMoney) + '积分  ' + parseInt(dealer.nCurGoldAmount) + '金币</p>';
+                s += '                <p>' + parseInt(dealer.dmCurMoney) + '积分';
+                s += '                <p class="clear"></p>';
+                s += '            </td>';
+                s += '        </tr>';
+            }
+            s += '        <tr>';
+            s += '            <td><p>获得福利奖励：</p></td>';
+            s += '            <td><p>' + parseInt(goldPrizeAmount) + '积分  ' + goldPeopleCount + '人</p></td>';
+            s += '        </tr>';
+
+            for (var i = 0; i < goldPeoples.length; i++) {
+
+                var dr = goldPeoples[i];
+
+                var nickName = dr.vcBetNickName;
+                if (nickName == "") {
+                    nickName = ReplaceBase64Img(dr.vcBase64WeixinName);
+                }
+
+                s += '        <tr>';
+                s += '            <td><p class="name">' + nickName + '</p></td>';
+                s += '            <td><p>' + (dr.nIsDealer == 1 ? '押' : '押') + '： ' + parseInt(dr.nIsDealer == 1 ? dr.dmDealerGoldBaseMoney : dr.dmMoney) + '  抢：' + dr.dmRedPackMoney + '  ' + dr.vcNumName + '  ' + parseFloat(dr.dmGoldTimes) + '倍  ' + dr.nPrizeMoney + '积分</p></td>';
+                s += '        </tr>';
+
+            }
+
+            s += '        </tbody>';
+            s += '    </table>';
+            s += '</li>';
+            s += '';
+            s += '<li>';
+            s += '    <table class="tb tb-3">';
+            s += '        <caption><p>第' + dealer.nRoundNo + '期总盈亏：<span class="c1">' + (parseInt(dealer.dmMchWinMoney) >= 0 ? '+' : '') + parseInt(dealer.dmMchWinMoney) + '分</span></p></caption>';
+            s += '        <tbody>';
+            s += '        <tr>';
+            s += '            <td><p><i class="icon icon-05"></i>代包费： <span class="c1">+' + dealer.dmMchRedPacketMoney + '分</span></p></td>';
+            s += '            <td><p><i class="icon icon-06"></i>手续费： <span class="c1">+' + dealer.dmMchFee + '分</span></p></td>';
+            s += '        </tr>';
+            s += '        <tr>';
+            s += '            <td><p><i class="icon icon-07"></i>福利奖： <span class="c3">-' + dealer.nPrizeOutGoldMoney + '分</span></p></td>';
+            s += '            <td><p><i class="icon icon-08"></i>抽水费： <span class="c1">+' + dealer.dmMchDrawMoney + '分</span></p></td>';
+            s += '        </tr>';
+
+            s += '        <tr>';
+
+            if (parseInt(dealer.dmTuoWinMoney) > 0) {
+                s += '            <td><p><i class="icon icon-09"></i>托赢亏： <span class="c1">+' + parseInt(dealer.dmTuoWinMoney) + '分</span></p></td>';
+            }
+            else {
+                s += '            <td><p><i class="icon icon-09"></i>托赢亏： <span class="c3">' + parseInt(dealer.dmTuoWinMoney) + '分</span></p></td>';
+            }
+
+            s += '            <td></td>';
+            s += '        </tr>';
+
+            s += '        </tbody>';
+            s += '    </table>';
+            s += '</li>';
+            s += '';
+
+            var listType = $.cookie("monitor_listtype");
+            listType = parseInt(listType);
+            if (!(listType >= 0)) listType = 0;
+
+            s += '<li>';
+            s += '    <table class="tb tb-4">';
+            s += '      <caption>';
+            s += '    <span class="sele-type">';
+            s += '        <select onchange="FilterPlayers(this)">';
+            s += '            <option value="0" ' + (listType == 0 ? ' selected="selected"' : '') + '>托盈亏</option>';
+            s += '            <option value="1" ' + (listType == 1 ? ' selected="selected"' : '') + '>玩家盈亏</option>';
+            s += '            <option value="2" ' + (listType == 2 ? ' selected="selected"' : '') + '>所有成员盈亏</option>';
+            s += '        </select>';
+            s += '        <em class="arrow"></em>';
+            s += '    </span>';
+            s += '</caption>';
+            s += '        <tbody>';
+
+            var dealerName = dealer.vcBetNickName;
+            if (dealerName == "") {
+                dealerName = ReplaceBase64Img(dealer.vcBase64WeixinName);
+            }
+
+            var showStyle = '';
+            if (listType == 0) {
+                if (dealer.nIsTuo != 1) showStyle = "display:none";
+            }
+            else if (listType == 1) {
+                if (dealer.nIsTuo == 1) showStyle = "display:none";
+            }
+
+
+            s += '        <tr istuo="' + dealer.nIsTuo + '" style="' + showStyle + '">';
+            s += '            <td><p class="name">' + dealerName + '</p></td>';
+            if (parseInt(dealer.dmDealerChangeMoney) > 0) {
+                s += '            <td><p class="c1">+' + parseInt(dealer.dmDealerChangeMoney) + '分</p></td>';
+            }
+            else {
+                s += '            <td><p class="c3">' + parseInt(dealer.dmDealerChangeMoney) + '分</p></td>';
+            }
+            s += '            <td><p>押' + parseInt(dealer.dmDealerGoldBaseMoney) + '</p></td>';
+            s += '            <td><p>抢' + dealer.dmRedPackMoney + '</p></td>';
+            s += '        </tr>';
+
+            for (var i = 0; i < tuo.length; i++) {
+
+                var dr = tuo[i];
+                var tuoName = dr.vcBetNickName;
+                if (tuoName == "") tuoName = ReplaceBase64Img(dr.vcBase64WeixinName);
+
+                var showStyle = '';
+                if (listType == 0) {
+                    if (dr.nIsTuo != 1) showStyle = "display:none";
+                }
+                else if (listType == 1) {
+                    if (dr.nIsTuo == 1) showStyle = "display:none";
+                }
+
+                s += '        <tr istuo="' + dr.nIsTuo + '" style="' + showStyle + '">';
+                s += '            <td><p class="name">' + tuoName + '</p></td>';
+                if (parseInt(dr.dmWinMoney) > 0) {
+                    s += '            <td><p class="c1">+' + parseInt(dr.dmWinMoney) + '分</p></td>';
+                }
+                else {
+                    s += '            <td><p class="c3">' + parseInt(dr.dmWinMoney) + '分</p></td>';
+                }
+                s += '            <td><p>押' + parseInt(dr.dmMoney) + '</p></td>';
+                s += '            <td><p>抢' + dr.dmRedPackMoney + "(" + dr.vcNumName + ')</p></td>';
+                s += '        </tr>';
+            }
+
+            s += '        </tbody>';
+            s += '    </table>';
+            s += '</li>';
+
+            
+
+            $("#divLog").html(s);
+        }
+
+        function TipMsg(msg) {
+            layer.open({
+                content: msg
+              , skin: 'msg'
+              , time: 1
+            });
+        }
+
+        function ProcessData(data) {
+
+            try {
+                switch (data.MonitorMsgType) {
+                    case "积分金币变动":
+                        GoldMoneyChange(data);
+                        break;
+                    case "上庄":
+                        ShowDealerBet(data);
+                        break;
+                    case "撤消":
+                        Cancel(data);
+                        break;
+                    case "进入押注":
+                        EnterBet(data);
+                        break;
+                    case "实时押注":
+                        RealTimeBet(data);
+                        break;
+                    case "批量押注":
+                        WagerInsert(data);
+                        break;
+                    case "发送红包":
+                        RedpackSended(data);
+                        break;
+                    case "通知":
+                        Notice(data);
+                        break;
+                    case "开奖":
+                        LoadLastDrawPrize(false);
+                        break;
+                    default:
+                        break;
+                }
+            } catch (err) {
+            }
+        }
+
+        /*全局变量*/
+        var strUrl = "ws://118.178.189.109:8000";
+        var wsoWebSocket = null;
+
+        /*建立连接*/
+        function Connect() {
+
+            var wsUrl = strUrl + "/" + encodeURIComponent(nGameRoomId);
+
+            if (window.WebSocket) {
+                wsoWebSocket = new WebSocket(wsUrl);
+            }
+            else {
+                if (window.MozWebSocket) {
+                    wsoWebSocket = new MozWebSocket(wsUrl);
+                }
+                else {
+                    gm.alert("浏览器不支持WebSocket");
+                }
+            }
+            wsoWebSocket.onopen = function () {
+                /*连接成功*/
+                //TipMsg("连接成功");
+            };
+            wsoWebSocket.onclose = function () {
+                /*断开连接,1秒后重连*/
+                TipMsg("断线重连");
+                wsoWebSocket.close();
+                window.setTimeout(Connect, 1000);
+            };
+            wsoWebSocket.onerror = function () {
+                /*通信错误*/
+                TipMsg("通信错误");
+            };
+
+            wsoWebSocket.onmessage = function (objMessage) {
+
+                try {
+
+                    // 处理消息
+                    var data = objMessage.data;
+                    if (data != "null" && data != "") {
+                        eval("data=" + data + ";");
+                        ProcessData(data);
+                    }
+
+                    // 收到消息了，鸡眼闪起来
+                    $("#divNetStatus").show();
+                    window.setTimeout(function () {
+                        $("#divNetStatus").hide();
+                    }, 500);
+
+                } catch (err) {
+                }
+
+            }
+        }
+
+        function LoadLastDrawPrize(needConnect) {
+            loading.show();
+            post("/api/MchInterface.asmx/GameRoomLastDrawPrize", { nGameRoomId: nGameRoomId }, function (data) {
+                loading.hide();
+
+                if (data.nBzRunOn == 1) $("#chkBzRunOn")[0].checked = true;
+
+                if (data.state == 1) {
+                    DrawPrize(data);
+                }
+                else {
+                    // 显示玩家总积分
+                    $("#divAddMoney .num").html(parseInt(data.dmPlayersMoney));
+                    // 显示玩家总金币
+                    $("#divAddGold .num").html(parseInt(data.nPlayersGold));
+                }
+                if (needConnect) {
+                    Connect();
+                }
+            });
+        }
+
+        LoadLastDrawPrize(true);
+
+    </script>
+
+
+</body></html>

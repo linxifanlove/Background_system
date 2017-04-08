@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>玩家余额</title>
+    <link href="common/font-awesome.css" rel="stylesheet">
+    <link href="common/plugin.css" rel="stylesheet">
+    <link href="common/profit.css" rel="stylesheet">
+    <link href="common/layer.css" type="text/css" rel="styleSheet" id="layermcss">
+
+    <script type="text/javascript" src="common/jquery.js"></script>
+    <script type="text/javascript" src="common/jquery_002.js"></script>
+    <script type="text/javascript" src="common/json2.js"></script>
+    <script type="text/javascript" src="common/loading.js"></script>
+    <script type="text/javascript" src="common/layer.js"></script>
+    <script type="text/javascript" src="common/emoji.js"></script>
+    <script type="text/javascript" src="common/utils.js"></script>
+    <script type="text/javascript" src="common/socket.js"></script>
+<style id="shcl1" type="text/css">@-o-keyframes shcl1_bounce{0%{visibility:visible;-o-transform:scale(1)}80%{-o-transform:scale(.3)}100%{-o-transform:scale(1)}}@-ms-keyframes shcl1_bounce{0%{visibility:visible;-ms-transform:scale(1)}80%{-ms-transform:scale(.3)}100%{-ms-transform:scale(1)}}@-webkit-keyframes shcl1_bounce{0%{visibility:visible;-webkit-transform:scale(1)}80%{-webkit-transform:scale(.3)}100%{-webkit-transform:scale(1)}}@-moz-keyframes shcl1_bounce{0%{visibility:visible;-moz-transform:scale(1)}80%{-moz-transform:scale(.3)}100%{-moz-transform:scale(1)}}@keyframes shcl1_bounce{0%{visibility:visible;transform:scale(1)}80%{transform:scale(.3)}100%{transform:scale(1)}}</style></head>
+<body>
+<div class="content profit">
+    <div class="head">
+        <div class="title">玩家余额</div>
+    </div>
+    <div class="tab">
+        <table class="play">
+            <thead>
+            <tr>
+                <td>成员</td>
+                <td>当前积分</td>
+                <td>当前金币</td>
+            </tr>
+            </thead>
+            <tbody id="divList"></tbody>
+        </table>
+    </div>
+</div>
+    <script type="text/javascript">
+
+        loading.show();
+        initSocket(sOpen, sError, sMessage, sClose);
+        var info = {};
+        info.id = "MoneyGoldList"
+        var data = [];
+        data.push(info);
+        var jsonStr = getJsonStr(data)
+        socket.send(jsonStr);
+        function sMessage(msg){ 
+            loading.hide();
+            console.log("run here 1")
+            var ret = JSON.parse(msg.data)
+            console.log("run here 2")
+            if (ret.id == "MoneyGoldList") {
+                var s = '';
+            console.log("run here 3")
+                for (var i = 0; i < ret.retList.length; i++) {
+                    var dr = ret.retList[i];
+                    var nick = dr.vcBetNickName;
+                    if (nick == "") nick = ReplaceBase64Img(dr.vcBase64WeixinName);
+
+                    s += '<tr>';
+                    s += '    <td class="face">'+nick+'</td>';
+                    s += '    <td>'+parseInt(dr.dmMoney)+'</td>';
+                    s += '    <td>'+parseInt(dr.nGoldAmount)+'</td>';
+                    s += '</tr>';
+                }
+
+                $("#divList").html(s);
+            }
+        }
+
+
+    </script>
+</body></html>
