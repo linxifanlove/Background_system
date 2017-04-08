@@ -1,0 +1,150 @@
+#!/usr/bin/env python
+# coding: utf-8
+import random
+import MySQLdb
+import socketClass
+
+GAME_REST = 0
+GAME_BANKER = 1
+GAME_BET=2
+GAME_READY_ANPOW=3
+GAME_SEND_ANPOW=4
+
+def dealMsg(self,msg):
+    return;
+
+groupMsgType=["txt","location","img","voice","card","ani","share","video","phone","Redraw","null","angpow","small video"];
+def dealGroup(self ,msg):
+    if msg["user"]["id"] != self.curGroup:
+        print  msg["user"]["name"]
+        print  "select:"+ self.curGroup
+        return;
+    if msg['content']['type'] != 0 :
+        return;
+    curplayer= msg['content']["user"]["name"];
+    txt =  msg['content']['data'];
+
+    try:
+        value = int(txt);
+    except:
+        value=0;
+    print value
+    if txt==u"开始" :
+        if self.gameState != GAME_REST:
+            self.send_msg_by_uid(u"游戏进行中,无法开始抢庄", self.curGroup);
+            return;
+        txt=u"开始抢庄,最小上庄分"+str(self.minBanker)+u"\n-------------------\n"
+        for d  in self.player :
+            txt = txt+d+u":"+str(self.player[d]["money"])+u"\n"
+            self.player[d]["bet"]=0;
+        self.send_msg_by_uid(txt, self.curGroup)
+        self.gameState=GAME_BANKER;
+        self.curBankerValue=self.minBanker-1;
+        self.curBanker=""
+        self.time=0;
+        return;
+    elif  txt==u"重推" :
+        self.gameState = GAME_REST;
+        self.send_msg_by_uid("游戏结束", self.curGroup);
+        return
+    elif txt == u"上分"
+        self.send_msg_by_uid("上分", self.curGroup);
+    if self.gameState== GAME_BANKER :
+        if value<=0:
+            return;
+        if value >self.curBankerValue :
+            if self.player[curplayer]["money"] >=  value:
+                self.send_msg_by_uid(curplayer+u"抢庄"+str(value), self.curGroup);
+            elif self.player[curplayer]["money"]> self.curBankerValue:
+                value = self.player[curplayer]["money"];
+                self.send_msg_by_uid("@"+curplayer + u" 余额不够,已经修改为" + str(self.player[curplayer]["money"]), self.curGroup);
+            else:
+                self.send_msg_by_uid("@" + curplayer + u" 余额不够",self.curGroup);
+                return;
+            self.curBankerValue= value;
+            self.curBanker=curplayer;
+            self.time =self.bankerTime-10;
+            print self.curBanker;
+        else:
+            self.send_msg_by_uid("@"+curplayer + u"当前最小标庄为" + str(self.curBankerValue), self.curGroup);
+    elif self.gameState== GAME_BET :
+        if value <= 0:
+            return;
+        if value < self.minBet:
+            self.send_msg_by_uid("@" + curplayer + u" 不够最低押分", self.curGroup);
+            value=0
+        if value > self.player[curplayer]["money"]:
+            if self.player[curplayer]["money"]>= self.minBet :
+                self.send_msg_by_uid("@" + curplayer + u" 余额不足,已经修改押分为" + str(self.player[curplayer]["money"]),
+                                 self.curGroup);
+            else:
+                self.send_msg_by_uid("@" + curplayer + u" 余额不足", self.curGroup);
+                value=0
+        if value > 0 :
+            self.player[curplayer]["bet"] = value
+
+
+
+
+
+def timeProc(self,curtime):
+    print str(self.time)+" state:" +str(self.gameState)
+    self.time = self.time +1;
+    if self.gameState == GAME_BANKER:
+        if self.time== self.bankerTime:
+            if self.curBanker!="":
+                self.send_msg_by_uid(u"抢庄结束,本局庄家"+self.curBanker+u" 抢庄分数:"+str(self.player[self.curBanker]["money"])+u"\n开始押注", self.curGroup);
+                self.gameState = GAME_BET;
+                self.time=0;
+            else:
+                self.send_msg_by_uid(u"无人抢庄,本局结束", self.curGroup);
+                self.gameState = GAME_REST;
+        elif self.time>self.bankerTime-5 :
+            self.send_msg_by_uid( u"还剩"+str(self.bankerTime-self.time)+u"秒", self.curGroup);
+    elif self.gameState == GAME_BET:
+        if self.time == self.betTime:
+
+                txt = u"押注结束\n-------------------\n"
+                for d in self.player:
+                    bet= self.player[d]["bet"];
+                    if bet > 0 :
+                        txt = txt + d + u":" + str(bet) + u"\n"
+                        self.player[d]["money"]-= bet;
+                        self.totalBet+= bet;
+                if self.totalBet == 0:
+                    self.send_msg_by_uid(u"本局无人押注,游戏结束", self.curGroup);
+                    self.gameState = GAME_REST
+                else:
+                    self.send_msg_by_uid(txt, self.curGroup)
+                    self.gameState = GAME_READY_ANPOW
+                    self.time=0;
+        elif self.time > self.betTime - 5:
+            self.send_msg_by_uid(u"押注倒计时"+str(self.betTime-self.time)+u"秒", self.curGroup);
+    elif self.gameState==GAME_READY_ANPOW:
+        if self.time==1 :
+            self.send_msg_by_uid(u"庄家请指示发包", self.curGroup);
+        elif self.time == self.readyAnpowTime:
+            self.send_msg_by_uid(u"庄家喊开始发包超时,开始发包", self.curGroup);
+            self.gameState = GAME_SEND_ANPOW
+            self.time=0
+
+
+
+def openDatabase():
+    conn = MySQLdb.connect(
+        host='localhost',
+        port=3306,
+        user='root',
+        passwd='0000',
+        db='maui',
+    )
+    cur = conn.cursor()
+    sql="insert into userInfo(name,credit) values('kevin',100)"
+    try:
+        cur.execute(sql)
+        conn.commit()
+    except:
+        conn.rollback()
+    conn.close()
+    print "sql suc";
+

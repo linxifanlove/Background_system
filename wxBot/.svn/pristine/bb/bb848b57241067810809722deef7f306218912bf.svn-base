@@ -1,0 +1,55 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+from wxbot import *
+
+import msgmoulde
+
+def auto_reload(name):
+    mods = [name] # the need reload modules
+
+    for mod in mods:
+        try:
+            module = sys.modules[mod]
+        except:
+            continue
+
+        filename = module.__file__
+        print filename 
+
+        try:
+          
+             reload(module)
+        except:
+            pass
+
+
+class MyWXBot(WXBot):
+    def handle_msg_all(self, msg):
+        if msg['msg_type_id'] == 3:
+            msgmoulde.dealGroup(self, msg)
+        elif msg['msg_type_id'] == 4:
+            print  msg['content']['type'] 
+            if msg['content']['type'] == 0:
+                if msg['content']['data']=='reload':
+                    auto_reload("msgmoulde")
+                    auto_reload("socketClass")
+                    return;
+            msgmoulde.dealMsg(self,msg)
+'''
+    def schedule(self):
+        self.send_msg(u'张三', u'测试')
+        time.sleep(1)
+'''
+
+
+def main():
+    bot = MyWXBot()
+    bot.DEBUG = True
+    bot.conf['qr'] = 'png'
+    bot.is_big_contact = False
+    bot.run()
+
+
+if __name__ == '__main__':
+    main()
